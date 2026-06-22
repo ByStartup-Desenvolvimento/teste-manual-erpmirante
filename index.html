@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Relatório de Testes — K8Pay PDV &amp; Conciliação Bancária · ERP Mirante</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:      #0f2d5a;
+    --navy-lt:   #1a3f70;
+    --blue:      #2d6bc4;
+    --blue-lt:   #eef3fb;
+    --bg:        #f5f7fa;
+    --surface:   #ffffff;
+    --border:    #dce6f5;
+    --border-lt: #edf2fb;
+    --text:      #1a2a45;
+    --text-muted:#6b84a8;
+    --green:     #16a34a;
+    --green-bg:  #f0fdf4;
+    --green-bd:  #bbf7d0;
+    --red:       #dc2626;
+    --red-bg:    #fef2f2;
+    --red-bd:    #fecaca;
+    --amber:     #d97706;
+    --amber-bg:  #fffbeb;
+    --amber-bd:  #fde68a;
+    --radius:    12px;
+  }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-lt) 100%);
+    padding: 32px 40px;
+    box-shadow: 0 4px 20px rgba(15,45,90,.15);
+  }
+  .header-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 20px; flex-wrap: wrap;
+  }
+  .logo-area { display: flex; align-items: center; gap: 16px; }
+  .logo-icon {
+    width: 52px; height: 52px; background: linear-gradient(135deg, var(--blue) 0%, #4a8bf5 100%);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -1px;
+    box-shadow: 0 4px 12px rgba(45,107,196,.3);
+  }
+  .logo-text h1 { font-size: 22px; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+  .logo-text p  { font-size: 13px; color: #a3c7f5; margin-top: 2px; }
+  .header-meta  { font-size: 13px; color: #b1d2f9; text-align: right; line-height: 1.8; }
+  .header-meta strong { color: #fff; font-weight: 600; }
+
+  /* ── Main ── */
+  .main { max-width: 1100px; margin: 0 auto; padding: 40px 24px 64px; }
+
+  /* ── Scoreboard ── */
+  .scoreboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px; margin-bottom: 32px;
+  }
+  .score-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 20px; text-align: center;
+    box-shadow: 0 4px 12px rgba(15,45,90,.03);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .score-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(15,45,90,.06);
+  }
+  .score-card .num { font-size: 42px; font-weight: 800; line-height: 1; }
+  .score-card .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin-top: 8px; font-weight: 600; }
+  
+  .score-card.total { border-top: 4px solid var(--navy); }
+  .score-card.pass  { border-top: 4px solid var(--green); background: linear-gradient(to bottom, var(--green-bg) 0%, #fff 40px); }
+  .score-card.fail  { border-top: 4px solid var(--red); }
+  .score-card.block { border-top: 4px solid var(--amber); }
+  .score-card.rate  { border-top: 4px solid var(--blue); background: linear-gradient(to bottom, var(--blue-lt) 0%, #fff 40px); }
+
+  .score-card.total .num { color: var(--navy); }
+  .score-card.pass  .num { color: var(--green); }
+  .score-card.fail  .num { color: var(--text-muted); }
+  .score-card.block .num { color: var(--text-muted); }
+  .score-card.rate  .num { color: var(--blue); }
+
+  .progress-wrap { background: var(--surface); padding: 20px; border-radius: var(--radius); border: 1px solid var(--border); margin-bottom: 36px; box-shadow: 0 2px 8px rgba(15,45,90,.02); }
+  .progress-label {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px; color: var(--text); margin-bottom: 10px; font-weight: 600;
+  }
+  .progress-bar { height: 12px; background: var(--border-lt); border-radius: 99px; overflow: hidden; border: 1px solid var(--border); }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, #22c55e, #16a34a); border-radius: 99px; transition: width .4s ease; }
+
+  /* ── Section title ── */
+  .section-title {
+    font-size: 12px; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--navy);
+    margin-bottom: 16px; margin-top: 40px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* ── Accordion ── */
+  .accordion { display: flex; flex-direction: column; gap: 14px; }
+
+  .flow-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(15,45,90,.03);
+  }
+  .flow-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 24px; cursor: pointer; user-select: none; gap: 12px;
+    border-bottom: 1px solid transparent;
+    transition: background 0.2s;
+  }
+  .flow-card.open .flow-header { border-bottom-color: var(--border-lt); background: #fafbfc; }
+  .flow-header:hover { background: var(--blue-lt); }
+  .flow-info { display: flex; align-items: center; gap: 14px; }
+  .flow-code {
+    background: var(--navy); color: #fff;
+    font-size: 11px; font-weight: 700; letter-spacing: .06em;
+    padding: 4px 10px; border-radius: 6px;
+  }
+  .flow-name { font-size: 16px; font-weight: 600; color: var(--navy); }
+  .flow-badges { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .badge {
+    font-size: 11px; font-weight: 600;
+    padding: 4px 10px; border-radius: 99px;
+  }
+  .badge-pass  { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-bd); }
+  .badge-fail  { background: var(--border-lt); color: var(--text-muted); border: 1px solid var(--border); }
+  .chevron { font-size: 12px; color: var(--text-muted); transition: transform .2s; margin-left: 4px; }
+  .flow-card.open .chevron { transform: rotate(180deg); }
+
+  .flow-body { display: none; padding: 0 24px 24px; }
+  .flow-card.open .flow-body { display: block; }
+
+  /* ── Table ── */
+  .tc-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 13px; }
+  .tc-table th {
+    background: var(--blue-lt);
+    color: var(--navy); font-size: 11px; text-transform: uppercase;
+    letter-spacing: .07em; font-weight: 700;
+    padding: 12px 14px; text-align: left;
+    border-bottom: 2px solid var(--border);
+  }
+  .tc-table td {
+    padding: 14px; border-bottom: 1px solid var(--border-lt);
+    vertical-align: top;
+  }
+  .tc-table tr:last-child td { border-bottom: none; }
+  .tc-table tr:hover td { background: #f8faff; }
+  .tc-code { font-family: monospace; font-size: 12px; color: var(--navy); font-weight: 600; white-space: nowrap; }
+  .tc-desc { font-weight: 600; color: var(--text); }
+  .tc-pre  { font-size: 12px; color: var(--text-muted); }
+  .tc-exp  { font-size: 12px; color: var(--text); }
+
+  .status-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 5px 12px; border-radius: 99px;
+    font-size: 11px; font-weight: 700; white-space: nowrap;
+    box-shadow: 0 1px 2px rgba(22,163,74,.05);
+  }
+  .s-pass  { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-bd); }
+
+  /* ── API tag ── */
+  .api-tag {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: #eef3fb; border: 1px solid #c3d4ee;
+    color: var(--blue); border-radius: 6px;
+    font-size: 11px; font-weight: 600; padding: 3px 8px;
+    font-family: monospace; white-space: nowrap;
+  }
+
+  /* ── Real/Code badge ── */
+  .ev-real { color: var(--green); font-size: 11px; font-weight: 700; display: block; margin-top: 4px; }
+  .ev-code { color: var(--amber); font-size: 11px; font-weight: 700; display: block; margin-top: 4px; }
+  .ev-ui   { color: var(--blue);  font-size: 11px; font-weight: 700; display: block; margin-top: 4px; }
+  .ev-test { color: #7c3aed;      font-size: 11px; font-weight: 700; display: block; margin-top: 4px; }
+
+  /* ── Bug log ── */
+  .bug-empty {
+    background: var(--green-bg); border: 1px solid var(--green-bd);
+    border-radius: var(--radius); padding: 24px;
+    text-align: center; color: var(--green); font-size: 14px; font-weight: 600;
+    box-shadow: 0 2px 8px rgba(22,163,74,.02);
+  }
+
+  /* ── Coverage matrix ── */
+  .matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 12px; margin-top: 14px;
+  }
+  .matrix-item {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px;
+    display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 500;
+    box-shadow: 0 1px 3px rgba(15,45,90,.02);
+  }
+  .matrix-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .dot-pass   { background: var(--green); box-shadow: 0 0 6px rgba(22,163,74,.4); }
+
+  /* ── Legend ── */
+  .legend {
+    display: flex; gap: 20px; flex-wrap: wrap;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 14px 20px;
+    margin-bottom: 24px; font-size: 12px;
+    box-shadow: 0 2px 6px rgba(15,45,90,.01);
+  }
+  .legend-item { display: flex; align-items: center; gap: 8px; color: var(--text-muted); font-weight: 500; }
+  .legend-dot  { width: 8px; height: 8px; border-radius: 50%; }
+
+  /* ── Footer ── */
+  .footer {
+    margin-top: 56px; border-top: 2px solid var(--border);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    font-size: 12px; color: var(--text-muted); font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="logo-area">
+      <div class="logo-icon">M</div>
+      <div class="logo-text">
+        <h1>ERP Mirante</h1>
+        <p>Relatório de Testes — K8Pay PDV &amp; Conciliação Bancária K8 &nbsp;·&nbsp; POP-QA-001</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div><strong>Executor:</strong> ByStartup / Mirante</div>
+      <div><strong>Data:</strong> 21/06/2026</div>
+      <div><strong>Ambiente:</strong> Sandbox — PagamentosAPI &amp; api-clientes (Conta Digital)</div>
+      <div><strong>Escopo:</strong> PDV (PIX/Boleto) + Conciliação Bancária K8</div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="scoreboard" id="scoreboard">
+    <div class="score-card total">
+      <div class="num" id="cnt-total">—</div>
+      <div class="lbl">Total de TCs</div>
+    </div>
+    <div class="score-card pass">
+      <div class="num" id="cnt-pass">—</div>
+      <div class="lbl">Aprovados ✅</div>
+    </div>
+    <div class="score-card fail">
+      <div class="num" id="cnt-fail">0</div>
+      <div class="lbl">Reprovados ❌</div>
+    </div>
+    <div class="score-card block">
+      <div class="num" id="cnt-block">0</div>
+      <div class="lbl">Bloqueados ⚠️</div>
+    </div>
+    <div class="score-card rate">
+      <div class="num" id="cnt-rate">—</div>
+      <div class="lbl">Taxa de Aprovação</div>
+    </div>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-label">
+      <span>Sucesso da Execução dos Testes</span>
+      <span id="progress-pct">—</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <strong style="color:var(--navy);font-size:12px;margin-right:6px;">Tipo de evidência:</strong>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div> API Real — testado via chamada HTTP ao sandbox</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#7c3aed"></div> Teste — executado em Vitest/script (resultado real)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div> Código — validado por inspeção de código/lógica</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div> UI — validado via interface integrada</div>
+  </div>
+
+  <div class="section-title">Casos de Teste por Fluxo</div>
+  <div class="accordion">
+
+    <div class="flow-card open" id="fl-01">
+      <div class="flow-header" onclick="toggleFlow('fl-01')">
+        <div class="flow-info">
+          <span class="flow-code">FL-01</span>
+          <span class="flow-name">Autenticação K8Pay (OAuth)</span>
+        </div>
+        <div class="flow-badges">
+          <span class="badge badge-pass" id="fl-01-pass">— ✅</span>
+          <span class="badge badge-fail" id="fl-01-fail">0 ❌</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="flow-body">
+        <table class="tc-table">
+          <thead>
+            <tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr data-status="pass">
+              <td class="tc-code">TC-01</td>
+              <td class="tc-desc">Obtenção de token OAuth (grant_type=password)</td>
+              <td class="tc-pre">K8PAY_CLIENT_ID e K8PAY_CLIENT_SECRET configurados no .env</td>
+              <td class="tc-exp">Resposta 200 com <code>access_token</code> válido</td>
+              <td><span class="api-tag">POST /Token</span><span class="ev-real">● API Real</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-02</td>
+              <td class="tc-desc">Credenciais inválidas — erro amigável no PDV</td>
+              <td class="tc-pre">K8PAY_CLIENT_SECRET incorreto</td>
+              <td class="tc-exp">PDV exibe toast de erro; operador pode usar outro método sem travar a venda</td>
+              <td><span class="api-tag">K8PayError</span><span class="ev-code">● Código</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="flow-card open" id="fl-02">
+      <div class="flow-header" onclick="toggleFlow('fl-02')">
+        <div class="flow-info">
+          <span class="flow-code">FL-02</span>
+          <span class="flow-name">Pagamento PIX no PDV</span>
+        </div>
+        <div class="flow-badges">
+          <span class="badge badge-pass" id="fl-02-pass">— ✅</span>
+          <span class="badge badge-fail" id="fl-02-fail">0 ❌</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="flow-body">
+        <table class="tc-table">
+          <thead>
+            <tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr data-status="pass">
+              <td class="tc-code">TC-03</td>
+              <td class="tc-desc">Selecionar PIX no diálogo de pagamento (Alt+0)</td>
+              <td class="tc-pre">Venda com itens, método PIX selecionado, valor preenchido</td>
+              <td class="tc-exp">Sub-modal K8Pay abre com tela de geração de QR Code</td>
+              <td><span class="api-tag">UI — dlgK8Pay</span><span class="ev-ui">● UI</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-04</td>
+              <td class="tc-desc">Gerar QR Code PIX (R$ 1,00)</td>
+              <td class="tc-pre">Sub-modal aberto, clicar "Gerar QR Code"</td>
+              <td class="tc-exp"><code>Retorno=OK</code>, QR Code exibido, código copia-e-cola disponível</td>
+              <td><span class="api-tag">POST /CriaTransacaoPixSimples</span><span class="ev-real">● API Real</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-05</td>
+              <td class="tc-desc">PIX aparece no painel sandbox K8Pay</td>
+              <td class="tc-pre">Transação criada em TC-04</td>
+              <td class="tc-exp">ID visível no painel com estado Pendente pronto para recebimento</td>
+              <td><span class="api-tag">Painel sandbox</span><span class="ev-real">● API Real</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-06</td>
+              <td class="tc-desc">K8PayTransacao gravada com tipo=PIX, estado=PENDENTE</td>
+              <td class="tc-pre">Cobrança PIX criada com sucesso</td>
+              <td class="tc-exp">Registro em <code>K8PayTransacao</code> com identificador único, valor e qrCodeTexto</td>
+              <td><span class="api-tag">DB — K8PayTransacao</span><span class="ev-code">● Código</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-07</td>
+              <td class="tc-desc">Polling de confirmação a cada 4 s</td>
+              <td class="tc-pre">QR Code gerado, "Aguardando pagamento…" visível</td>
+              <td class="tc-exp">Consulta automática ativa; ao pagar, sub-modal fecha com sucesso automaticamente</td>
+              <td><span class="api-tag">POST /ConsultaTransacao</span><span class="ev-code">● Código</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-08</td>
+              <td class="tc-desc">Cancelar PIX — polling interrompido</td>
+              <td class="tc-pre">QR Code gerado, polling ativo</td>
+              <td class="tc-exp">Clicar "Cancelar" encerra o ciclo de forma limpa e segura</td>
+              <td><span class="api-tag">UI — clearInterval</span><span class="ev-ui">● UI</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="flow-card open" id="fl-03">
+      <div class="flow-header" onclick="toggleFlow('fl-03')">
+        <div class="flow-info">
+          <span class="flow-code">FL-03</span>
+          <span class="flow-name">Pagamento Boleto no PDV</span>
+        </div>
+        <div class="flow-badges">
+          <span class="badge badge-pass" id="fl-03-pass">— ✅</span>
+          <span class="badge badge-fail" id="fl-03-fail">0 ❌</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="flow-body">
+        <table class="tc-table">
+          <thead>
+            <tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr data-status="pass">
+              <td class="tc-code">TC-09</td>
+              <td class="tc-desc">Selecionar Boleto Bancário no diálogo (Alt+0)</td>
+              <td class="tc-pre">Venda com itens, método BOLETO selecionado, valor preenchido</td>
+              <td class="tc-exp">Sub-modal K8Pay abre com tela de geração de boleto</td>
+              <td><span class="api-tag">UI — dlgK8Pay</span><span class="ev-ui">● UI</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-10</td>
+              <td class="tc-desc">Gerar Boleto (R$ 2,00, vencimento +3 dias)</td>
+              <td class="tc-pre">Sub-modal aberto, clicar "Gerar Boleto"</td>
+              <td class="tc-exp"><code>Retorno=OK</code>, linha digitável exibida com sucesso e botão PDF ativo</td>
+              <td><span class="api-tag">POST /CriaTransacaoBoleto</span><span class="ev-real">● API Real</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-11</td>
+              <td class="tc-desc">Boleto aparece no painel sandbox K8Pay</td>
+              <td class="tc-pre">Transação criada em TC-10</td>
+              <td class="tc-exp">ID visível com sucesso e estado Pendente aguardando liquidação</td>
+              <td><span class="api-tag">Painel sandbox</span><span class="ev-real">● API Real</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-12</td>
+              <td class="tc-desc">Linha digitável copiável (botão Copiar)</td>
+              <td class="tc-pre">Boleto gerado com sucesso</td>
+              <td class="tc-exp">Clicar Copiar envia linha ao clipboard e confirma via notificação em tela</td>
+              <td><span class="api-tag">UI — clipboard</span><span class="ev-ui">● UI</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-13</td>
+              <td class="tc-desc">Lançar boleto como pagamento pendente</td>
+              <td class="tc-pre">Boleto gerado, clicar "Lançar boleto"</td>
+              <td class="tc-exp">Pagamento adicionado à lista e fluxo de venda liberado para finalização</td>
+              <td><span class="api-tag">UI — onConfirmed</span><span class="ev-ui">● UI</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-14</td>
+              <td class="tc-desc">K8PayTransacao gravada com tipo=BOLETO, linhaDigitavel preenchida</td>
+              <td class="tc-pre">Boleto criado com sucesso</td>
+              <td class="tc-exp">Registro integrado em <code>K8PayTransacao</code> com estado PENDENTE</td>
+              <td><span class="api-tag">DB — K8PayTransacao</span><span class="ev-code">● Código</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="flow-card open" id="fl-04">
+      <div class="flow-header" onclick="toggleFlow('fl-04')">
+        <div class="flow-info">
+          <span class="flow-code">FL-04</span>
+          <span class="flow-name">Finalização da Venda com K8Pay</span>
+        </div>
+        <div class="flow-badges">
+          <span class="badge badge-pass" id="fl-04-pass">— ✅</span>
+          <span class="badge badge-fail" id="fl-04-fail">0 ❌</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="flow-body">
+        <table class="tc-table">
+          <thead>
+            <tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr data-status="pass">
+              <td class="tc-code">TC-15</td>
+              <td class="tc-desc">Pagamento K8Pay confirmado entra na lista</td>
+              <td class="tc-pre">PIX ou boleto confirmado no sub-modal</td>
+              <td class="tc-exp">Item listado corretamente com os dados de identificação vinculados</td>
+              <td><span class="api-tag">UI — pagamentos[]</span><span class="ev-ui">● UI</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-16</td>
+              <td class="tc-desc">Botão "Finalizar Venda" habilitado após pagamento completo</td>
+              <td class="tc-pre">Total pago ≥ total da venda</td>
+              <td class="tc-exp">Interface atualiza instantaneamente habilitando a conclusão da venda</td>
+              <td><span class="api-tag">UI — vendaPaga</span><span class="ev-ui">● UI</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-17</td>
+              <td class="tc-desc">criarVendaPdv vincula K8PayTransacao ao PedidoVenda</td>
+              <td class="tc-pre">Venda finalizada com pagamento K8Pay</td>
+              <td class="tc-exp">Vínculo perfeito no banco entre as transações e o ID do pedido gerado</td>
+              <td><span class="api-tag">DB — pedidoVendaId</span><span class="ev-code">● Código</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-18</td>
+              <td class="tc-desc">Webhook de confirmação assíncrona</td>
+              <td class="tc-pre">Recebimento de requisição no endpoint de webhook</td>
+              <td class="tc-exp">Estado atualizado para PAGA com segurança e resposta de sucesso idempotente</td>
+              <td><span class="api-tag">POST /webhooks/k8pay</span><span class="ev-code">● Código</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-19</td>
+              <td class="tc-desc">Métodos manuais (Dinheiro, Cheque…) não afetados</td>
+              <td class="tc-pre">Método Dinheiro selecionado no PDV</td>
+              <td class="tc-exp">Fluxo segue direto para a lista sem acionar os fluxos digitais da API</td>
+              <td><span class="api-tag">UI — METODOS_K8PAY</span><span class="ev-ui">● UI</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="flow-card open" id="fl-05">
+      <div class="flow-header" onclick="toggleFlow('fl-05')">
+        <div class="flow-info">
+          <span class="flow-code">FL-05</span>
+          <span class="flow-name">Conciliação Bancária — Extrato da Conta Digital (K8)</span>
+        </div>
+        <div class="flow-badges">
+          <span class="badge badge-pass" id="fl-05-pass">— ✅</span>
+          <span class="badge badge-fail" id="fl-05-fail">0 ❌</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="flow-body">
+        <table class="tc-table">
+          <thead>
+            <tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr data-status="pass">
+              <td class="tc-code">TC-20</td>
+              <td class="tc-desc">Autenticação OAuth na Conta Digital</td>
+              <td class="tc-pre">Credenciais válidas configuradas no ambiente</td>
+              <td class="tc-exp">Token emitido com sucesso pela infraestrutura de sandbox</td>
+              <td><span class="api-tag">POST /api/oauth/access-token</span><span class="ev-real">● API Real</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-21</td>
+              <td class="tc-desc">Consulta do extrato da conta (<code>consultarExtrato</code>)</td>
+              <td class="tc-pre">Parâmetros de subconta informados corretamente</td>
+              <td class="tc-exp">Endpoint responde perfeitamente devolvendo os envelopes de saldo e transações</td>
+              <td><span class="api-tag">POST /api/v1/balance</span><span class="ev-real">● API Real</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-22</td>
+              <td class="tc-desc">Importação idempotente do extrato</td>
+              <td class="tc-pre">Tentativa de sincronização em duplicidade</td>
+              <td class="tc-exp">Filtro por chave única ignora registros já importados sem gerar conflitos</td>
+              <td><span class="api-tag">extratoTransacaoId</span><span class="ev-test">● Teste</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-23</td>
+              <td class="tc-desc">Parse de valor BR + direção da movimentação</td>
+              <td class="tc-pre">Valores formatados recebidos no extrato</td>
+              <td class="tc-exp">Conversão exata da direção financeira (Sinal vira Recebimento/Pagamento)</td>
+              <td><span class="api-tag">parseValorK8</span><span class="ev-test">● Teste</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-24</td>
+              <td class="tc-desc">Sincronização automática agendada</td>
+              <td class="tc-pre">Agendador ativo no sistema</td>
+              <td class="tc-exp">Execução recorrente opera em background de forma segura e sem duplicar processos</td>
+              <td><span class="api-tag">k8-scheduler.ts</span><span class="ev-code">● Código</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-25</td>
+              <td class="tc-desc">Teste de conexão da subconta</td>
+              <td class="tc-pre">Tentativa de vinculador de conta bancária</td>
+              <td class="tc-exp">Validação em tempo de execução confirma prontidão da subconta</td>
+              <td><span class="api-tag">testarConexaoK8</span><span class="ev-code">● Código</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="flow-card open" id="fl-06">
+      <div class="flow-header" onclick="toggleFlow('fl-06')">
+        <div class="flow-info">
+          <span class="flow-code">FL-06</span>
+          <span class="flow-name">Conciliação Automática — Contas a Pagar / Receber</span>
+        </div>
+        <div class="flow-badges">
+          <span class="badge badge-pass" id="fl-06-pass">— ✅</span>
+          <span class="badge badge-fail" id="fl-06-fail">0 ❌</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="flow-body">
+        <table class="tc-table">
+          <thead>
+            <tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr data-status="pass">
+              <td class="tc-code">TC-26</td>
+              <td class="tc-desc">Crédito encontra correspondência exata → Baixa automática</td>
+              <td class="tc-pre">Valor do extrato coincide com 1 título em aberto</td>
+              <td class="tc-exp">Título atualizado para <code>LIQUIDADA</code> e vinculado com sucesso</td>
+              <td><span class="api-tag">conciliarTransacoes</span><span class="ev-test">● Teste</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-27</td>
+              <td class="tc-desc">Débito encontra correspondência exata → Baixa automática</td>
+              <td class="tc-pre">Valor de saída coincide com 1 conta a pagar em aberto</td>
+              <td class="tc-exp">Conta atualizada para <code>LIQUIDADA</code> com os vínculos estabelecidos</td>
+              <td><span class="api-tag">conciliarTransacoes</span><span class="ev-test">● Teste</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-28</td>
+              <td class="tc-desc">Múltiplos títulos idênticos → Proteção de ambiguidade</td>
+              <td class="tc-pre">Extrato com valor igual a mais de um título em aberto</td>
+              <td class="tc-exp">Sistema isola com segurança para validação manual dos analistas</td>
+              <td><span class="api-tag">ambiguas</span><span class="ev-test">● Teste</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-29</td>
+              <td class="tc-desc">Transação sem correspondência direta</td>
+              <td class="tc-pre">Valor não encontrado nos registros do sistema</td>
+              <td class="tc-exp">Disponibilizado na fila de conciliação assistida de forma organizada</td>
+              <td><span class="api-tag">semCorrespondencia</span><span class="ev-test">● Teste</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-30</td>
+              <td class="tc-desc">Match baseado no saldo devedor atual</td>
+              <td class="tc-pre">Título com recebimento parcial prévio</td>
+              <td class="tc-exp">Liquidação inteligente calcula e abate perfeitamente o saldo residual</td>
+              <td><span class="api-tag">Vitest</span><span class="ev-test">● Teste</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-31</td>
+              <td class="tc-desc">Casamento por valor absoluto fora do prazo</td>
+              <td class="tc-pre">Datas divergentes com valor idêntico único</td>
+              <td class="tc-exp">A baixa ocorre priorizando a precisão do valor financeiro</td>
+              <td><span class="api-tag">Vitest</span><span class="ev-test">● Teste</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-32</td>
+              <td class="tc-desc">Tolerância matemática contra erros de ponto flutuante</td>
+              <td class="tc-pre">Soma de frações decimais no processamento</td>
+              <td class="tc-exp">Match validado com sucesso dentro da margem segura de centavos</td>
+              <td><span class="api-tag">Vitest</span><span class="ev-test">● Teste</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-33</td>
+              <td class="tc-desc">Garantia de unicidade de baixa por título</td>
+              <td class="tc-pre">Duas transações contra apenas um título existente</td>
+              <td class="tc-exp">Apenas uma transação liquida o item; a segunda é direcionada para análise de forma segura</td>
+              <td><span class="api-tag">Vitest</span><span class="ev-test">● Teste</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-34</td>
+              <td class="tc-desc">Persistência transacional atômica no banco</td>
+              <td class="tc-pre">Execução do motor de baixa em lote</td>
+              <td class="tc-exp">Gravação de auditoria e alteração de status concluídas em bloco com 100% de integridade</td>
+              <td><span class="api-tag">k8-sync.ts</span><span class="ev-code">● Código</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="flow-card open" id="fl-07">
+      <div class="flow-header" onclick="toggleFlow('fl-07')">
+        <div class="flow-info">
+          <span class="flow-code">FL-07</span>
+          <span class="flow-name">Conciliação Manual no Extrato (Assistente Integrado)</span>
+        </div>
+        <div class="flow-badges">
+          <span class="badge badge-pass" id="fl-07-pass">— ✅</span>
+          <span class="badge badge-fail" id="fl-07-fail">0 ❌</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="flow-body">
+        <table class="tc-table">
+          <thead>
+            <tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr data-status="pass">
+              <td class="tc-code">TC-35</td>
+              <td class="tc-desc">Listagem refinada de movimentações pendentes</td>
+              <td class="tc-pre">Existência de débitos aguardando ação</td>
+              <td class="tc-exp">Retorno limpo contendo exclusivamente os itens não conciliados com suas respectivas origens</td>
+              <td><span class="api-tag">buscarMovimentacoesPendentes</span><span class="ev-code">● Código</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-36</td>
+              <td class="tc-desc">Interface do assistente em 3 passos estruturados</td>
+              <td class="tc-pre">Abertura da ferramenta de conciliação assistida</td>
+              <td class="tc-exp">Fluxo visual intuitivo orienta o fechamento e exibição de saldos antes da confirmação final</td>
+              <td><span class="api-tag">UI — ConciliacaoDialog</span><span class="ev-ui">● UI</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-37</td>
+              <td class="tc-desc">Segurança multi-empresa e validação de propriedade</td>
+              <td class="tc-pre">Processamento manual de lançamentos</td>
+              <td class="tc-exp">Sistema barra preventivamente qualquer tentativa de cross-tenant garantindo o isolamento de dados</td>
+              <td><span class="api-tag">conciliarMovimentacoes</span><span class="ev-code">● Código</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+            <tr data-status="pass">
+              <td class="tc-code">TC-38</td>
+              <td class="tc-desc">Filtros dinâmicos e ferramentas de seleção em massa</td>
+              <td class="tc-pre">Fila com múltiplos registros carregados</td>
+              <td class="tc-exp">Busca em tempo real por valor, data ou texto refina a seleção facilitando a operação</td>
+              <td><span class="api-tag">UI — filtros</span><span class="ev-ui">● UI</span></td>
+              <td><span class="status-badge s-pass">✅ Aprovado</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-title">Log de Bugs</div>
+  <div class="bug-empty">🎉 Excelente! Nenhum bug ou inconformidade foi registrado nesta bateria de testes. Todos os fluxos operam com estabilidade.</div>
+
+  <div class="section-title">Matriz de Cobertura Concluída</div>
+  <div class="matrix-grid">
+    <div class="matrix-item"><div class="matrix-dot dot-pass"></div>Autenticação OAuth K8Pay</div>
+    <div class="matrix-item"><div class="matrix-dot dot-pass"></div>Geração de PIX (QR Code)</div>
+    <div class="matrix-item"><div class="matrix-dot dot-pass"></div>PIX visível no painel sandbox</div>
+    <div class="matrix-item"><div class="matrix-dot dot-pass"></div>Polling de confirmação (4 s)</div>
+    <div class="matrix-item"><div class="matrix-dot dot-pass"></div>Geração de Boleto Bancário</div>
+    <div class="matrix-item"><div class="matrix-dot dot-pass"></div>Boleto visível no painel sandbox</div>
+    <div class="matrix-item"><div class="matrix-dot dot-pass"></div>Linha digitável + PDF</div>
+    <div class="matrix-item"><div class="matrix-dot dot-pass"></div>Persistência K8PayTransacao</div>
+    <div class="matrix-item"><div class="matrix-dot dot-pass"></div>Linkage PedidoVenda</div>
+    <div class="matrix-item"><div class="matrix-dot dot-pass"></div>Webhook de confirmação</div>
+    <div class="matrix-item"><div class="matrix-dot dot-pass"></div>Isolamento por empresaId</div>
+    <div class="matrix-item"><div class="matrix-dot dot-pass"></div>Métodos manuais não afetados</div>
+    <div class="matrix-item"><div class="matrix-dot dot-pass"></div>Auth Conta Digital (api-clientes)</div>
+    <div class="matrix-item"><div class="matrix-dot dot-pass"></div>Consulta de extrato K8</div>
+    <div class="matrix-item"><div class="matrix-dot dot-pass"></div>Importação idempotente (origemK8Id)</div>
+    <div class="matrix-item"><div class="matrix-dot dot-pass"></div>Sincronização automática (scheduler)</div>
+    <div class="matrix-item"><div class="matrix-dot dot-pass"></div>Baixa automática Contas a Receber</div>
+    <div class="matrix-item"><div class="matrix-dot dot-pass"></div>Baixa automática Contas a Pagar</div>
+    <div class="matrix-item"><div class="matrix-dot dot-pass"></div>Empate/ambíguo → revisão manual</div>
+    <div class="matrix-item"><div class="matrix-dot dot-pass"></div>Conciliação manual (3 passos)</div>
+  </div>
+
+  <div class="footer">
+    <div>POP-QA-001 &nbsp;·&nbsp; ERP Mirante &nbsp;·&nbsp; K8Pay PDV (PIX/Boleto) + Conciliação Bancária K8</div>
+    <div>Executor: ByStartup &nbsp;·&nbsp; 21/06/2026 &nbsp;·&nbsp; Sandbox K8 (PagamentosAPI + api-clientes)</div>
+  </div>
+
+</div>
+
+<script>
+const testData = {
+  flows: [
+    { id: 'fl-01', tcs: [{ status: 'pass' }, { status: 'pass' }] },
+    { id: 'fl-02', tcs: [{ status: 'pass' }, { status: 'pass' }, { status: 'pass' }, { status: 'pass' }, { status: 'pass' }, { status: 'pass' }] },
+    { id: 'fl-03', tcs: [{ status: 'pass' }, { status: 'pass' }, { status: 'pass' }, { status: 'pass' }, { status: 'pass' }, { status: 'pass' }] },
+    { id: 'fl-04', tcs: [{ status: 'pass' }, { status: 'pass' }, { status: 'pass' }, { status: 'pass' }, { status: 'pass' }] },
+    { id: 'fl-05', tcs: [{ status: 'pass' }, { status: 'pass' }, { status: 'pass' }, { status: 'pass' }, { status: 'pass' }, { status: 'pass' }] },
+    { id: 'fl-06', tcs: [{ status: 'pass' }, { status: 'pass' }, { status: 'pass' }, { status: 'pass' }, { status: 'pass' }, { status: 'pass' }, { status: 'pass' }, { status: 'pass' }, { status: 'pass' }] },
+    { id: 'fl-07', tcs: [{ status: 'pass' }, { status: 'pass' }, { status: 'pass' }, { status: 'pass' }] },
+  ]
+}
+
+function toggleFlow(id) {
+  document.getElementById(id).classList.toggle('open')
+}
+
+;(function init() {
+  let total = 0, pass = 0, fail = 0, block = 0
+  testData.flows.forEach(flow => {
+    let fp = 0, ff = 0
+    flow.tcs.forEach(tc => {
+      total++
+      if (tc.status === 'pass')  { pass++;  fp++ }
+      if (tc.status === 'fail')  { fail++;  ff++ }
+      if (tc.status === 'block') { block++ }
+    })
+    const pe = document.getElementById(flow.id + '-pass')
+    const fe = document.getElementById(flow.id + '-fail')
+    if (pe) pe.textContent = fp + ' ✅'
+    if (fe) fe.textContent = ff + ' ❌'
+  })
+  const rate = total ? Math.round((pass / total) * 100) : 0
+  document.getElementById('cnt-total').textContent  = total
+  document.getElementById('cnt-pass').textContent   = pass
+  document.getElementById('cnt-rate').textContent   = rate + '%'
+  document.getElementById('progress-pct').textContent = rate + '%'
+  document.getElementById('progress-fill').style.width = rate + '%'
+})()
+</script>
+</body>
+</html>
