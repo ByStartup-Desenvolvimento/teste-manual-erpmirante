@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Autenticação — Relatório de Testes ERP Mirante</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="logo-area">
+      <div class="logo-icon">M</div>
+      <div class="logo-text">
+        <h1>ERP Mirante</h1>
+        <p>Relatório de Testes Manuais — Sistema Completo &nbsp;·&nbsp; POP-QA-001</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div><strong>Executor:</strong> ByStartup / Mirante</div>
+      <div><strong>Data:</strong> 23/06/2026</div>
+      <div><strong>Ambiente:</strong> Sandbox — Next.js 15 + PostgreSQL + K8Pay + Spedy</div>
+      <div><strong>Escopo:</strong> Módulos principais do ERP (fluxos críticos)</div>
+    </div>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> Visão Geral <span class="nav-badge">82</span></a>
+    <a href="auth.html" class="nav-btn active"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Autenticação <span class="nav-badge">6</span></a>
+    <a href="pessoas.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Pessoas <span class="nav-badge">7</span></a>
+    <a href="produtos.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> Produtos &amp; Serviços <span class="nav-badge">11</span></a>
+    <a href="vendas.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Vendas <span class="nav-badge">16</span></a>
+    <a href="financeiro.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Financeiro <span class="nav-badge">13</span></a>
+    <a href="compras.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Compras <span class="nav-badge">8</span></a>
+    <a href="nfe.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Notas Fiscais <span class="nav-badge">13</span></a>
+    <a href="config.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Configurações <span class="nav-badge">8</span></a>
+  </div>
+</nav>
+
+<main class="main">
+
+  <div class="scoreboard">
+    <div class="score-card total"><div class="num">6</div><div class="lbl">Total</div></div>
+    <div class="score-card pass"><div class="num">6</div><div class="lbl">Aprovados</div></div>
+    <div class="score-card fail"><div class="num">0</div><div class="lbl">Reprovados</div></div>
+    <div class="score-card rate"><div class="num">100%</div><div class="lbl">Taxa</div></div>
+  </div>
+
+  <div class="section-title">Casos de Teste — Autenticação &amp; Sessão</div>
+  <div class="accordion">
+
+    <div class="flow-card open" id="fl-auth-01">
+      <div class="flow-header" onclick="toggleFlow('fl-auth-01')">
+        <div class="flow-info">
+          <span class="flow-code">FL-01</span>
+          <span class="flow-name">Login &amp; Sessão JWT</span>
+        </div>
+        <div class="flow-badges">
+          <span class="badge badge-pass">6 ✓</span>
+          <span class="badge badge-fail">0 ✗</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="flow-body">
+        <table class="tc-table">
+          <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="tc-code">TC-01</td><td class="tc-desc">Login com credenciais válidas</td><td class="tc-pre">Usuário cadastrado e ativo</td><td class="tc-exp">Redirecionamento ao dashboard, sessão JWT criada</td><td><span class="api-tag">POST /api/auth/signin</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-02</td><td class="tc-desc">Login com senha incorreta</td><td class="tc-pre">Credencial inválida fornecida</td><td class="tc-exp">Mensagem de erro amigável, sem redirecionamento</td><td><span class="api-tag">NextAuth callback</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-03</td><td class="tc-desc">Logout limpa sessão</td><td class="tc-pre">Usuário autenticado</td><td class="tc-exp">Cookie de sessão removido, retorno à tela de login</td><td><span class="api-tag">POST /api/auth/signout</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-04</td><td class="tc-desc">Acesso a rota protegida sem autenticação</td><td class="tc-pre">Usuário não autenticado tenta acessar /dashboard</td><td class="tc-exp">Redirecionamento automático para /login</td><td><span class="api-tag">middleware.ts</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-05</td><td class="tc-desc">Isolamento multi-empresa (empresaId)</td><td class="tc-pre">Usuário de empresa A autenticado</td><td class="tc-exp">Dados retornados pertencem apenas à empresa A</td><td><span class="api-tag">session.user.empresaId</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-06</td><td class="tc-desc">Controle de acesso por perfil (role)</td><td class="tc-pre">Usuário com perfil restrito</td><td class="tc-exp">Menus e rotas proibidas ocultados/bloqueados conforme perfil</td><td><span class="api-tag">UI — sidebar</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div>Módulo: Autenticação &amp; Sessão — FL-01</div>
+    <div>POP-QA-001 · ERP Mirante · 23/06/2026</div>
+  </div>
+
+</main>
+
+<script>
+function toggleFlow(id){ document.getElementById(id).classList.toggle('open') }
+</script>
+</body>
+</html>
