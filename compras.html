@@ -1,67 +1,69 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Compras — Relatório de Testes ERP Mirante</title>
 <link rel="stylesheet" href="style.css"/>
+<script src="components.js"></script>
 </head>
 <body>
-<div class="header"><div class="header-inner"><div class="logo-area"><div class="logo-icon">M</div><div class="logo-text"><h1>ERP Mirante</h1><p>Relatório de Testes Manuais — Sistema Completo &nbsp;·&nbsp; POP-QA-001</p></div></div><div class="header-meta"><div><strong>Executor:</strong> ByStartup / Mirante</div><div><strong>Data:</strong> 23/06/2026</div><div><strong>Ambiente:</strong> Sandbox — Next.js 15 + PostgreSQL + K8Pay + Spedy</div><div><strong>Escopo:</strong> Módulos principais do ERP (fluxos críticos)</div></div></div></div>
-<nav class="nav-bar"><div class="nav-inner">
-  <a href="index.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> Visão Geral <span class="nav-badge">82</span></a>
-  <a href="auth.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Autenticação <span class="nav-badge">6</span></a>
-  <a href="pessoas.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Pessoas <span class="nav-badge">7</span></a>
-  <a href="produtos.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> Produtos &amp; Serviços <span class="nav-badge">11</span></a>
-  <a href="vendas.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Vendas <span class="nav-badge">16</span></a>
-  <a href="financeiro.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Financeiro <span class="nav-badge">13</span></a>
-  <a href="compras.html" class="nav-btn active"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Compras <span class="nav-badge">8</span></a>
-  <a href="nfe.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Notas Fiscais <span class="nav-badge">13</span></a>
-  <a href="config.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Configurações <span class="nav-badge">8</span></a>
-</div></nav>
-
 <main class="main">
+
   <div class="scoreboard">
-    <div class="score-card total"><div class="num">8</div><div class="lbl">Total</div></div>
-    <div class="score-card pass"><div class="num">8</div><div class="lbl">Aprovados</div></div>
+    <div class="score-card total"><div class="num">19</div><div class="lbl">Total</div></div>
+    <div class="score-card pass"><div class="num">19</div><div class="lbl">Aprovados</div></div>
     <div class="score-card fail"><div class="num">0</div><div class="lbl">Reprovados</div></div>
     <div class="score-card rate"><div class="num">100%</div><div class="lbl">Taxa</div></div>
   </div>
 
-  <div class="section-title">Casos de Teste — Compras</div>
+  <div class="section-title">Casos de Teste — Compras (2 fluxos)</div>
   <div class="accordion">
 
+    <!-- FL-11: SOLICITAÇÕES DE COMPRA -->
     <div class="flow-card open" id="fl-comp-01">
       <div class="flow-header" onclick="toggleFlow('fl-comp-01')">
         <div class="flow-info"><span class="flow-code">FL-11</span><span class="flow-name">Solicitações de Compra</span></div>
-        <div class="flow-badges"><span class="badge badge-pass">3 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
+        <div class="flow-badges"><span class="badge badge-pass">8 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
       </div>
       <div class="flow-body">
         <table class="tc-table">
           <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
           <tbody>
-            <tr><td class="tc-code">TC-54</td><td class="tc-desc">Criar solicitação de compra</td><td class="tc-pre">Módulo Compras &gt; Solicitações aberto</td><td class="tc-exp">Solicitação salva com itens, quantidade e fornecedor sugerido</td><td><span class="api-tag">createSolicitacao action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-55</td><td class="tc-desc">Aprovar solicitação de compra</td><td class="tc-pre">Solicitação com status PENDENTE</td><td class="tc-exp">Status → APROVADA, visível no monitor de compras</td><td><span class="api-tag">aprovarSolicitacao action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-56</td><td class="tc-desc">Monitor de compras em tempo real</td><td class="tc-pre">Módulo Compras &gt; Monitor aberto</td><td class="tc-exp">Solicitações e entradas exibidas com status atualizado em tempo real</td><td><span class="api-tag">UI — /compras/monitor</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-54</td><td class="tc-desc">Listagem de solicitações com cards de resumo</td><td class="tc-pre">Módulo Compras > Solicitações aberto</td><td class="tc-exp">Cards exibem: Total, Pendentes, Aprovadas e Valor Estimado Total; tabela com colunas número (SC-AAAA-NNN), departamento, solicitante, prioridade, data necessária, valor e status</td><td><span class="api-tag">buscarSolicitacoesCompra action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-55</td><td class="tc-desc">Criar solicitação com itens, prioridade e fornecedor sugerido</td><td class="tc-pre">Botão "Nova Solicitação" clicado</td><td class="tc-exp">Formulário exige Departamento (obrigatório) e aceita: Data Necessária, Prioridade (ALTA/MEDIA/BAIXA), Observações e itens com Produto, Quantidade, Valor Estimado e Fornecedor Sugerido; salva com status PENDENTE e numeração SC-AAAA-NNN</td><td><span class="api-tag">criarSolicitacaoCompra action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-56</td><td class="tc-desc">Aprovar solicitação PENDENTE</td><td class="tc-pre">Solicitação com status PENDENTE na listagem</td><td class="tc-exp">Ação "Aprovar" na linha: status → APROVADA; badge verde atualizado imediatamente; cards de resumo recalculados</td><td><span class="api-tag">atualizarStatusSolicitacao — APROVADA</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-161</td><td class="tc-desc">Rejeitar solicitação PENDENTE</td><td class="tc-pre">Solicitação com status PENDENTE</td><td class="tc-exp">Ação "Rejeitar" disponível; status → REJEITADA; badge vermelho atualizado; solicitação visível no filtro "Rejeitadas"</td><td><span class="api-tag">atualizarStatusSolicitacao — REJEITADA</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-162</td><td class="tc-desc">Filtro por status e por prioridade</td><td class="tc-pre">Solicitações com status e prioridades variados</td><td class="tc-exp">Filtro de status (Todos/Pendente/Aprovada/Rejeitada) e filtro de prioridade (Todos/Alta/Média/Baixa) funcionam independentemente e em combinação; busca livre por número, solicitante ou departamento</td><td><span class="api-tag">buscarSolicitacoesCompra — filtros</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-163</td><td class="tc-desc">Editar solicitação com status PENDENTE</td><td class="tc-pre">Solicitação PENDENTE; ação "Editar" acionada</td><td class="tc-exp">Dialog pré-preenchido com dados atuais; itens editáveis (adicionar/remover/alterar quantidade); alterações salvas sem mudar numeração ou status</td><td><span class="api-tag">editarSolicitacaoCompra action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-164</td><td class="tc-desc">Visualizar detalhes da solicitação</td><td class="tc-pre">Qualquer solicitação na listagem; ação "Visualizar"</td><td class="tc-exp">Dialog exibe dados completos: departamento, solicitante, prioridade, data, observações e tabela de itens com produto, qtd., valor estimado e fornecedor sugerido</td><td><span class="api-tag">UI — dialog visualizar</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-165</td><td class="tc-desc">Excluir solicitação com confirmação</td><td class="tc-pre">Solicitação na listagem; ação "Excluir"</td><td class="tc-exp">Modal de confirmação exibido; ao confirmar: solicitação removida da listagem (soft-delete); cards de resumo atualizados</td><td><span class="api-tag">excluirSolicitacaoCompra action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
+    <!-- FL-12: ENTRADA DE MERCADORIAS -->
     <div class="flow-card open" id="fl-ent-01">
       <div class="flow-header" onclick="toggleFlow('fl-ent-01')">
-        <div class="flow-info"><span class="flow-code">FL-12</span><span class="flow-name">Entrada de Mercadorias (XML NF-e)</span></div>
-        <div class="flow-badges"><span class="badge badge-pass">5 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
+        <div class="flow-info"><span class="flow-code">FL-12</span><span class="flow-name">Entrada de Mercadorias</span></div>
+        <div class="flow-badges"><span class="badge badge-pass">11 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
       </div>
       <div class="flow-body">
         <table class="tc-table">
           <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
           <tbody>
-            <tr><td class="tc-code">TC-57</td><td class="tc-desc">Importar XML NF-e do fornecedor</td><td class="tc-pre">Arquivo XML de NF-e válido selecionado</td><td class="tc-exp">Parser extrai produtos, fornecedor e valores corretamente</td><td><span class="api-tag">parseXmlNFe action</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-58</td><td class="tc-desc">Criação automática de produto novo via XML</td><td class="tc-pre">Produto do XML não cadastrado no sistema</td><td class="tc-exp">Produto criado automaticamente com dados do XML, NCM preenchido</td><td><span class="api-tag">auto-create produto</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-59</td><td class="tc-desc">Atualização de estoque na entrada</td><td class="tc-pre">XML processado, entrada confirmada</td><td class="tc-exp">Saldo de estoque incrementado para cada produto da NF-e</td><td><span class="api-tag">updateEstoque action</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-60</td><td class="tc-desc">Custo de entrada e cálculo de preço sugerido</td><td class="tc-pre">Itens importados, margem configurada</td><td class="tc-exp">Preço de venda sugerido calculado com impostos e margem</td><td><span class="api-tag">UI — custo/preço</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-61</td><td class="tc-desc">Fornecedor criado automaticamente via XML</td><td class="tc-pre">CNPJ emitente não cadastrado</td><td class="tc-exp">Fornecedor criado com razão social e CNPJ do XML</td><td><span class="api-tag">auto-create fornecedor</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-57</td><td class="tc-desc">Importar XML NF-e do fornecedor (aba XML)</td><td class="tc-pre">Aba "XML" da entrada; arquivo .xml válido selecionado</td><td class="tc-exp">Parser extrai: dados do emitente, número/série/data/chave/valor total da nota e todos os itens com código, descrição, qtd., valor unitário, NCM e CFOP; matching automático com produtos cadastrados por código/EAN</td><td><span class="api-tag">parseXmlEntrada action</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-58</td><td class="tc-desc">Produto novo criado automaticamente via XML</td><td class="tc-pre">Item do XML sem correspondência no cadastro</td><td class="tc-exp">Produto criado automaticamente com código, descrição, NCM e unidade extraídos do XML; vinculado ao item na tela de conferência; flag "novo" indicado visualmente</td><td><span class="api-tag">criarEntradaMercadoria — auto produto</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-59</td><td class="tc-desc">Fornecedor criado automaticamente via XML</td><td class="tc-pre">CNPJ do emitente não cadastrado como fornecedor</td><td class="tc-exp">Fornecedor criado com razão social, CNPJ, IE e endereço extraídos do XML; vinculado à entrada; aparece no cadastro de pessoas</td><td><span class="api-tag">criarEntradaMercadoria — auto fornecedor</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-60</td><td class="tc-desc">Entrada manual (aba Manual) — sem XML</td><td class="tc-pre">Aba "Manual" selecionada; dados do fornecedor digitados</td><td class="tc-exp">Formulário aceita: CNPJ, razão social, cidade, UF (27 estados), CEP; número/série/data da nota; itens com código/EAN, descrição, qtd., valor unitário, unidade (UN/PC/CX/KG/L/M etc.), NCM, CFOP; botão "Ir para Conferência" disponível após ao menos 1 item</td><td><span class="api-tag">UI — EntradaManualTab</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-61</td><td class="tc-desc">Tela de conferência — modal de Impostos por item</td><td class="tc-pre">Entrada na tela de conferência; ícone "Impostos" clicado no item</td><td class="tc-exp">Modal exibe e permite editar: pIcms (%), vIcms (R$), pIpi (%), vIpi (R$), vPis (R$), vCofins (R$) e vSt — Substituição Tributária (R$); valores salvos por item</td><td><span class="api-tag">UI — modal impostos</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-166</td><td class="tc-desc">Tela de conferência — modal de Custos e Preços (markup)</td><td class="tc-pre">Tela de conferência; ícone "Custos/Preços" clicado no item</td><td class="tc-exp">Modal exibe custo final calculado (qtd × VU ± encargos); campo de markup (padrão 30%); preço de venda sugerido recalculado em tempo real; valores confirmados persistem na entrada</td><td><span class="api-tag">UI — modal custos precos</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-167</td><td class="tc-desc">Tela de conferência — modal de Encargos (frete, seguro, desconto)</td><td class="tc-pre">Tela de conferência; ícone "Encargos" clicado no item</td><td class="tc-exp">Modal aceita: Frete, Seguro, Outras Despesas, Impostos Adicionais, Desconto e Abatimento; custo final do item recalculado ao fechar modal</td><td><span class="api-tag">UI — modal encargos</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-168</td><td class="tc-desc">Tela de conferência — modal de Conversão de Unidade</td><td class="tc-pre">Item comprado em unidade diferente do cadastro (ex: caixa vs. unidade)</td><td class="tc-exp">Modal aceita fator de conversão e tipo (multiplicar/dividir); estoque atualizado na unidade correta do produto; custo unitário recalculado com base na conversão</td><td><span class="api-tag">UI — modal conversao unidade</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-169</td><td class="tc-desc">Confirmar entrada — estoque incrementado e status CONFIRMADA</td><td class="tc-pre">Tela de conferência revisada; botão "Confirmar" clicado</td><td class="tc-exp">EntradaMercadoria salva com status CONFIRMADA; estoque de cada produto incrementado pela quantidade da entrada; movimentação de entrada registrada com número da NF como documento; auditoria gravada</td><td><span class="api-tag">criarEntradaMercadoria action</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-170</td><td class="tc-desc">Histórico de entradas — listagem, filtros e download XML</td><td class="tc-pre">Aba "Histórico" com entradas registradas</td><td class="tc-exp">Colunas: número, fornecedor, CNPJ, data, qtd. itens, valor total, status; filtros por busca livre, intervalo de datas e status (RASCUNHO/CONFIRMADA/CANCELADA); ação "Download XML" disponível para entradas importadas via XML</td><td><span class="api-tag">listarHistoricoEntradas action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-171</td><td class="tc-desc">Exportar histórico de entradas para XLSX</td><td class="tc-pre">Aba Histórico com entradas; botão de exportação clicado</td><td class="tc-exp">Arquivo .xlsx baixado com colunas: Número, Fornecedor, CNPJ, Data, Itens, Valor, Status; header azul; totalizadores no rodapé</td><td><span class="api-tag">UI — export XLSX histórico</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -70,8 +72,8 @@
   </div>
 
   <div class="footer">
-    <div>Módulo: Compras — FL-11, FL-12</div>
-    <div>POP-QA-001 · ERP Mirante · 23/06/2026</div>
+    <div>Modulo: Compras — FL-11, FL-12</div>
+    <div>POP-QA-001 · ERP Mirante · 20/06/2026</div>
   </div>
 </main>
 <script>function toggleFlow(id){ document.getElementById(id).classList.toggle('open') }</script>

@@ -10,8 +10,8 @@
 }
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
 
-.header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-lt) 100%);padding:28px 40px;box-shadow:0 4px 20px rgba(15,45,90,.15)}
-.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-lt) 100%);padding:28px 24px;box-shadow:0 4px 20px rgba(15,45,90,.15)}
+.header-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .logo-area{display:flex;align-items:center;gap:16px}
 .logo-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--blue) 0%,#4a8bf5 100%);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;letter-spacing:-1px;box-shadow:0 4px 12px rgba(45,107,196,.3)}
 .logo-text h1{font-size:20px;font-weight:700;color:#fff;letter-spacing:-0.5px}
@@ -19,10 +19,11 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .header-meta{font-size:12px;color:#b1d2f9;text-align:right;line-height:1.9}
 .header-meta strong{color:#fff;font-weight:600}
 
+/* NAV CENTRALIZADO */
 .nav-bar{background:var(--surface);border-bottom:2px solid var(--border);box-shadow:0 2px 8px rgba(15,45,90,.04);position:sticky;top:0;z-index:100}
-.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:2px;padding:0 12px;overflow-x:auto;scrollbar-width:none}
+.nav-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:4px;padding:0 24px;overflow-x:auto;scrollbar-width:none}
 .nav-inner::-webkit-scrollbar{display:none}
-.nav-btn{display:inline-flex;align-items:center;gap:6px;padding:13px 15px;font-size:13px;font-weight:600;color:var(--text-muted);text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap;transition:all .2s;margin-bottom:-2px}
+.nav-btn{display:inline-flex;align-items:center;gap:6px;padding:14px 16px;font-size:12.5px;font-weight:600;color:var(--text-muted);text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap;transition:all .2s;margin-bottom:-2px}
 .nav-btn svg{flex-shrink:0}
 .nav-btn:hover{color:var(--navy);background:var(--blue-lt)}
 .nav-btn.active{color:var(--navy);border-bottom-color:var(--blue);background:var(--blue-lt)}
@@ -52,22 +53,25 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 
 .accordion{display:flex;flex-direction:column;gap:12px}
 .flow-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 6px rgba(15,45,90,.03)}
-.flow-header{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;cursor:pointer;user-select:none;gap:12px;border-bottom:1px solid transparent;transition:background .2s}
+.flow-header{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;cursor:pointer;user-select:none;gap:12px;border-bottom:1px solid transparent;transition:background .2s;flex-wrap:wrap}
 .flow-card.open .flow-header{border-bottom-color:var(--border-lt);background:#fafbfc}
 .flow-header:hover{background:var(--blue-lt)}
-.flow-info{display:flex;align-items:center;gap:12px}
+.flow-info{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .flow-code{background:var(--navy);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:6px}
 .flow-name{font-size:15px;font-weight:600;color:var(--navy)}
 .flow-badges{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .badge{font-size:11px;font-weight:600;padding:4px 10px;border-radius:99px}
 .badge-pass{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bd)}
 .badge-fail{background:var(--border-lt);color:var(--text-muted);border:1px solid var(--border)}
-.chevron{font-size:11px;color:var(--text-muted);transition:transform .2s;margin-left:4px}
+.chevron{font-size:11px;color:var(--text-muted);transition:transform .2s;margin-left:auto}
 .flow-card.open .chevron{transform:rotate(180deg)}
-.flow-body{display:none;padding:0 22px 22px}
+
+/* CORREÇÃO DO TOGGLE: Adicionado display: none por padrão */
+.flow-body{display:none;padding:0 22px 22px;overflow-x:auto} 
 .flow-card.open .flow-body{display:block}
 
-.tc-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px}
+/* TABELA RESPONSIVA */
+.tc-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px;min-width:600px}
 .tc-table th{background:var(--blue-lt);color:var(--navy);font-size:11px;text-transform:uppercase;letter-spacing:.07em;font-weight:700;padding:11px 13px;text-align:left;border-bottom:2px solid var(--border)}
 .tc-table td{padding:13px;border-bottom:1px solid var(--border-lt);vertical-align:top}
 .tc-table tr:last-child td{border-bottom:none}
@@ -98,3 +102,50 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .legend-dot{width:8px;height:8px;border-radius:50%}
 
 .footer{margin-top:48px;border-top:2px solid var(--border);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--text-muted);font-weight:500}
+
+/* --- MEDIA QUERIES DE RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+  .header{padding:20px 16px}
+  .header-inner{flex-direction:column;text-align:center;justify-content:center}
+  .logo-area{flex-direction:column;gap:10px}
+  .header-meta{text-align:center}
+  
+  /* Garante o scroll lateral suave no mobile sem quebrar o alinhamento */
+  .nav-inner{justify-content:flex-start;padding:0 16px}
+  
+  .main{padding:20px 16px 40px}
+}
+
+/* Ativa a transição entre páginas separadas */
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Define a duração total da troca (0.25 segundos para ser rápido e sutil) */
+  ::view-transition-group(root) {
+    animation-duration: 0.25s;
+    animation-timing-function: ease-in-out;
+  }
+
+  /* Sumir com a página antiga sem sair do lugar */
+  ::view-transition-old(root) {
+    animation: fade-out 0.2s forwards;
+  }
+
+  /* Surgir com a nova página no mesmo ponto */
+  ::view-transition-new(root) {
+    animation: fade-in 0.25s both;
+  }
+}
+
+/* Animações puras de opacidade */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}

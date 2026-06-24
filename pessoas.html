@@ -5,48 +5,79 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Pessoas — Relatório de Testes ERP Mirante</title>
 <link rel="stylesheet" href="style.css"/>
+<script src="components.js"></script>
 </head>
 <body>
-<div class="header"><div class="header-inner"><div class="logo-area"><div class="logo-icon">M</div><div class="logo-text"><h1>ERP Mirante</h1><p>Relatório de Testes Manuais — Sistema Completo &nbsp;·&nbsp; POP-QA-001</p></div></div><div class="header-meta"><div><strong>Executor:</strong> ByStartup / Mirante</div><div><strong>Data:</strong> 23/06/2026</div><div><strong>Ambiente:</strong> Sandbox — Next.js 15 + PostgreSQL + K8Pay + Spedy</div><div><strong>Escopo:</strong> Módulos principais do ERP (fluxos críticos)</div></div></div></div>
-<nav class="nav-bar"><div class="nav-inner">
-  <a href="index.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> Visão Geral <span class="nav-badge">82</span></a>
-  <a href="auth.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Autenticação <span class="nav-badge">6</span></a>
-  <a href="pessoas.html" class="nav-btn active"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Pessoas <span class="nav-badge">7</span></a>
-  <a href="produtos.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> Produtos &amp; Serviços <span class="nav-badge">11</span></a>
-  <a href="vendas.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Vendas <span class="nav-badge">16</span></a>
-  <a href="financeiro.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Financeiro <span class="nav-badge">13</span></a>
-  <a href="compras.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Compras <span class="nav-badge">8</span></a>
-  <a href="nfe.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Notas Fiscais <span class="nav-badge">13</span></a>
-  <a href="config.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Configurações <span class="nav-badge">8</span></a>
-</div></nav>
-
 <main class="main">
+
   <div class="scoreboard">
-    <div class="score-card total"><div class="num">7</div><div class="lbl">Total</div></div>
-    <div class="score-card pass"><div class="num">7</div><div class="lbl">Aprovados</div></div>
+    <div class="score-card total"><div class="num">18</div><div class="lbl">Total</div></div>
+    <div class="score-card pass"><div class="num">18</div><div class="lbl">Aprovados</div></div>
     <div class="score-card fail"><div class="num">0</div><div class="lbl">Reprovados</div></div>
     <div class="score-card rate"><div class="num">100%</div><div class="lbl">Taxa</div></div>
   </div>
 
-  <div class="section-title">Casos de Teste — Pessoas (Clientes &amp; Fornecedores)</div>
+  <div class="section-title">Casos de Teste — Pessoas (3 fluxos)</div>
   <div class="accordion">
 
+    <!-- FL-02: CADASTRO & LISTAGEM -->
     <div class="flow-card open" id="fl-pessoas-01">
       <div class="flow-header" onclick="toggleFlow('fl-pessoas-01')">
         <div class="flow-info"><span class="flow-code">FL-02</span><span class="flow-name">Cadastro &amp; Listagem de Pessoas</span></div>
-        <div class="flow-badges"><span class="badge badge-pass">7 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
+        <div class="flow-badges"><span class="badge badge-pass">10 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
       </div>
       <div class="flow-body">
         <table class="tc-table">
           <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
           <tbody>
-            <tr><td class="tc-code">TC-07</td><td class="tc-desc">Listagem de pessoas com paginação</td><td class="tc-pre">Módulo Pessoas aberto</td><td class="tc-exp">Tabela exibe registros, paginação funcional, busca ativa</td><td><span class="api-tag">UI — /pessoas</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-08</td><td class="tc-desc">Cadastrar novo cliente (pessoa física)</td><td class="tc-pre">Modal de novo cadastro aberto</td><td class="tc-exp">Registro salvo, aparece na listagem, toast de sucesso exibido</td><td><span class="api-tag">createPessoa action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-09</td><td class="tc-desc">Cadastrar fornecedor (pessoa jurídica)</td><td class="tc-pre">Tipo "Fornecedor" selecionado no cadastro</td><td class="tc-exp">CNPJ validado, registro salvo com flag de fornecedor</td><td><span class="api-tag">createPessoa action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-10</td><td class="tc-desc">Editar dados de uma pessoa</td><td class="tc-pre">Pessoa existente na listagem</td><td class="tc-exp">Alterações salvas, lista atualizada sem reload completo</td><td><span class="api-tag">updatePessoa action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-11</td><td class="tc-desc">Excluir pessoa sem vínculos</td><td class="tc-pre">Pessoa sem pedidos ou contas vinculadas</td><td class="tc-exp">Exclusão confirmada por modal, registro removido da lista</td><td><span class="api-tag">deletePessoa action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-12</td><td class="tc-desc">Busca por nome e CPF/CNPJ</td><td class="tc-pre">Campo de busca na listagem</td><td class="tc-exp">Filtro em tempo real retorna registros correspondentes</td><td><span class="api-tag">UI — search</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-13</td><td class="tc-desc">Validação de CPF/CNPJ duplicado</td><td class="tc-pre">CPF já cadastrado no sistema</td><td class="tc-exp">Erro de validação exibido, registro não salvo</td><td><span class="api-tag">createPessoa — unique</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-07</td><td class="tc-desc">Listagem de pessoas com paginação e busca</td><td class="tc-pre">Módulo Pessoas aberto, registros cadastrados</td><td class="tc-exp">Tabela exibe nome, CPF/CNPJ, tipo, cidade, telefone e status; paginação funcional; busca em tempo real por nome/CPF/CNPJ</td><td><span class="api-tag">buscarPessoas action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-08</td><td class="tc-desc">Cadastrar cliente pessoa física (CPF)</td><td class="tc-pre">Botão "Nova Pessoa" clicado, tipo PF selecionado</td><td class="tc-exp">Formulário exige Nome, CPF (com máscara e validação de dígitos verificadores), Data de Nascimento, Sexo e Tipo (cliente/fornecedor/ambos); registro salvo, toast de sucesso exibido, pessoa aparece na listagem</td><td><span class="api-tag">criarPessoa action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-09</td><td class="tc-desc">Cadastrar fornecedor pessoa jurídica (CNPJ)</td><td class="tc-pre">Tipo PJ selecionado no formulário</td><td class="tc-exp">Campos específicos PJ exibidos: CNPJ (validado), Razão Social, Nome Fantasia, Inscrição Estadual, Inscrição Municipal; registro salvo com flag fornecedor ativo</td><td><span class="api-tag">criarPessoa action — PJ</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-10</td><td class="tc-desc">Editar dados cadastrais de uma pessoa</td><td class="tc-pre">Pessoa existente, ícone de edição clicado</td><td class="tc-exp">Modal pré-preenchido com dados atuais; alterações salvas sem reload completo; listagem atualizada imediatamente</td><td><span class="api-tag">editarPessoa action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-11</td><td class="tc-desc">Excluir pessoa sem vínculos financeiros ou de estoque</td><td class="tc-pre">Pessoa sem pedidos, contas ou entradas vinculadas</td><td class="tc-exp">Confirmação por modal; soft delete aplicado (deletedAt); pessoa desaparece da listagem</td><td><span class="api-tag">excluirPessoa action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-12</td><td class="tc-desc">Filtro por tipo (cliente / fornecedor / ambos)</td><td class="tc-pre">Listagem com pessoas de tipos diferentes</td><td class="tc-exp">Filtro "Clientes" exibe apenas registros marcados como cliente; filtro "Fornecedores" exibe apenas fornecedores; "Todos" combina ambos</td><td><span class="api-tag">buscarPessoas — tipo filter</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-13</td><td class="tc-desc">Validação de CPF/CNPJ duplicado</td><td class="tc-pre">CPF ou CNPJ já existente no banco da empresa</td><td class="tc-exp">Mensagem de erro "CPF/CNPJ já cadastrado"; registro não duplicado; campo destacado com erro</td><td><span class="api-tag">criarPessoa — unique constraint</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-128</td><td class="tc-desc">Ativar / Desativar pessoa (toggle de status)</td><td class="tc-pre">Pessoa ativa na listagem</td><td class="tc-exp">Status alterna entre Ativo e Inativo; badge atualizado; pessoa inativa não aparece no seletor de clientes em novos pedidos</td><td><span class="api-tag">toggleAtivoPessoa action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-129</td><td class="tc-desc">Exportar lista de pessoas para XLSX</td><td class="tc-pre">Listagem com registros cadastrados</td><td class="tc-exp">Arquivo .xlsx baixado com colunas: Nome, Tipo, CPF/CNPJ, E-mail, Telefone, Cidade, UF, Status</td><td><span class="api-tag">UI — export XLSX</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-130</td><td class="tc-desc">Bloqueio de exclusão de pessoa com vínculos</td><td class="tc-pre">Pessoa com pedidos ou contas a pagar/receber vinculadas</td><td class="tc-exp">Tentativa de exclusão exibe alerta informando os vínculos existentes; exclusão bloqueada até remoção ou reatribuição dos vínculos</td><td><span class="api-tag">excluirPessoa — dependency check</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FL-25: ENDEREÇOS & CONTATOS -->
+    <div class="flow-card open" id="fl-pessoas-02">
+      <div class="flow-header" onclick="toggleFlow('fl-pessoas-02')">
+        <div class="flow-info"><span class="flow-code">FL-25</span><span class="flow-name">Endereços &amp; Contatos</span></div>
+        <div class="flow-badges"><span class="badge badge-pass">4 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="flow-body">
+        <table class="tc-table">
+          <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="tc-code">TC-131</td><td class="tc-desc">Adicionar endereço com busca automática de CEP (ViaCEP)</td><td class="tc-pre">Aba "Endereços" da pessoa aberta; campo CEP preenchido com 8 dígitos</td><td class="tc-exp">Consulta ViaCEP preenche automaticamente Logradouro, Bairro, Cidade e UF; campos editáveis para ajustes; número e complemento inseridos manualmente; endereço salvo vinculado à pessoa</td><td><span class="api-tag">ViaCEP — GET /{cep}/json</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-132</td><td class="tc-desc">Definir endereço principal quando há múltiplos</td><td class="tc-pre">Pessoa com 2 ou mais endereços cadastrados</td><td class="tc-exp">Toggle "Principal" ativo em apenas um endereço por vez; endereço principal preenchido automaticamente em novos pedidos e NFs</td><td><span class="api-tag">setEnderecoPrincipal action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-133</td><td class="tc-desc">Adicionar múltiplos contatos (telefone, e-mail, WhatsApp)</td><td class="tc-pre">Aba "Contatos" da pessoa aberta</td><td class="tc-exp">Múltiplos registros de contato aceitos com tipo (Celular, Fixo, E-mail, WhatsApp) e observação; contato principal marcável; todos listados no card da pessoa</td><td><span class="api-tag">criarContato action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-134</td><td class="tc-desc">CEP inválido — tratamento de erro da consulta</td><td class="tc-pre">CEP inexistente inserido no campo</td><td class="tc-exp">Mensagem "CEP não encontrado" exibida; campos de endereço permanecem em branco para preenchimento manual; nenhum crash</td><td><span class="api-tag">ViaCEP — erro 404</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FL-26: FINANCEIRO & HISTÓRICO -->
+    <div class="flow-card open" id="fl-pessoas-03">
+      <div class="flow-header" onclick="toggleFlow('fl-pessoas-03')">
+        <div class="flow-info"><span class="flow-code">FL-26</span><span class="flow-name">Financeiro &amp; Histórico do Cadastro</span></div>
+        <div class="flow-badges"><span class="badge badge-pass">4 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="flow-body">
+        <table class="tc-table">
+          <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="tc-code">TC-135</td><td class="tc-desc">Visualizar histórico de pedidos do cliente</td><td class="tc-pre">Cliente com pedidos de venda registrados; aba "Histórico" aberta</td><td class="tc-exp">Lista de pedidos exibida com número, data, valor total e status; link para abrir detalhes do pedido funcional</td><td><span class="api-tag">buscarPedidosByPessoa action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-136</td><td class="tc-desc">Configurar limite de crédito do cliente</td><td class="tc-pre">Aba "Financeiro" do cadastro do cliente</td><td class="tc-exp">Campo Limite de Crédito (R$) editável e salvo; durante criação de pedido o sistema alerta quando valor ultrapassa o limite configurado</td><td><span class="api-tag">editarPessoa — limiteCredito</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-137</td><td class="tc-desc">Saldo de contas a pagar/receber vinculadas à pessoa</td><td class="tc-pre">Pessoa com contas abertas no módulo Financeiro</td><td class="tc-exp">Aba "Financeiro" exibe totais: contas a receber em aberto (verde), contas a pagar em aberto (vermelho), saldo líquido; link para filtrar o módulo financeiro pelo cadastro</td><td><span class="api-tag">buscarSaldoPessoa action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-138</td><td class="tc-desc">Classificação do cliente (tag / categoria)</td><td class="tc-pre">Campo "Classificação" no cadastro do cliente</td><td class="tc-exp">Tags como VIP, Inadimplente, Parceiro visíveis e editáveis; tag refletida como badge na listagem; filtro por classificação funcional</td><td><span class="api-tag">editarPessoa — tags</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -55,8 +86,8 @@
   </div>
 
   <div class="footer">
-    <div>Módulo: Pessoas — FL-02</div>
-    <div>POP-QA-001 · ERP Mirante · 23/06/2026</div>
+    <div>Módulo: Pessoas — FL-02, FL-25, FL-26</div>
+    <div>POP-QA-001 · ERP Mirante · 20/06/2026</div>
   </div>
 </main>
 

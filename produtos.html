@@ -1,70 +1,170 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Produtos &amp; Serviços — Relatório de Testes ERP Mirante</title>
 <link rel="stylesheet" href="style.css"/>
+<script src="components.js"></script>
 </head>
 <body>
-<div class="header"><div class="header-inner"><div class="logo-area"><div class="logo-icon">M</div><div class="logo-text"><h1>ERP Mirante</h1><p>Relatório de Testes Manuais — Sistema Completo &nbsp;·&nbsp; POP-QA-001</p></div></div><div class="header-meta"><div><strong>Executor:</strong> ByStartup / Mirante</div><div><strong>Data:</strong> 23/06/2026</div><div><strong>Ambiente:</strong> Sandbox — Next.js 15 + PostgreSQL + K8Pay + Spedy</div><div><strong>Escopo:</strong> Módulos principais do ERP (fluxos críticos)</div></div></div></div>
-<nav class="nav-bar"><div class="nav-inner">
-  <a href="index.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> Visão Geral <span class="nav-badge">82</span></a>
-  <a href="auth.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Autenticação <span class="nav-badge">6</span></a>
-  <a href="pessoas.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Pessoas <span class="nav-badge">7</span></a>
-  <a href="produtos.html" class="nav-btn active"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> Produtos &amp; Serviços <span class="nav-badge">11</span></a>
-  <a href="vendas.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Vendas <span class="nav-badge">16</span></a>
-  <a href="financeiro.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Financeiro <span class="nav-badge">13</span></a>
-  <a href="compras.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Compras <span class="nav-badge">8</span></a>
-  <a href="nfe.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Notas Fiscais <span class="nav-badge">13</span></a>
-  <a href="config.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Configurações <span class="nav-badge">8</span></a>
-</div></nav>
-
 <main class="main">
   <div class="scoreboard">
-    <div class="score-card total"><div class="num">11</div><div class="lbl">Total</div></div>
-    <div class="score-card pass"><div class="num">11</div><div class="lbl">Aprovados</div></div>
+    <div class="score-card total"><div class="num">42</div><div class="lbl">Total</div></div>
+    <div class="score-card pass"><div class="num">42</div><div class="lbl">Aprovados</div></div>
     <div class="score-card fail"><div class="num">0</div><div class="lbl">Reprovados</div></div>
     <div class="score-card rate"><div class="num">100%</div><div class="lbl">Taxa</div></div>
   </div>
 
-  <div class="section-title">Casos de Teste — Produtos &amp; Serviços</div>
+  <div class="section-title">Casos de Teste — Produtos &amp; Serviços (7 fluxos)</div>
   <div class="accordion">
 
+    <!-- ── FL-03: PRODUTOS CRUD & WIZARD ── -->
     <div class="flow-card open" id="fl-prod-01">
       <div class="flow-header" onclick="toggleFlow('fl-prod-01')">
-        <div class="flow-info"><span class="flow-code">FL-03</span><span class="flow-name">Produtos — CRUD &amp; Estoque</span></div>
-        <div class="flow-badges"><span class="badge badge-pass">6 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
+        <div class="flow-info"><span class="flow-code">FL-03</span><span class="flow-name">Produtos — CRUD, Wizard &amp; Recursos Avançados</span></div>
+        <div class="flow-badges"><span class="badge badge-pass">14 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
       </div>
       <div class="flow-body">
         <table class="tc-table">
           <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
           <tbody>
-            <tr><td class="tc-code">TC-14</td><td class="tc-desc">Listagem de produtos com estoque</td><td class="tc-pre">Módulo Produtos &gt; Estoque aberto</td><td class="tc-exp">Tabela exibe produtos, quantidades e preços corretamente</td><td><span class="api-tag">UI — /produtos/estoque</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-15</td><td class="tc-desc">Cadastrar novo produto com preço e NCM</td><td class="tc-pre">Modal de produto aberto</td><td class="tc-exp">Produto salvo com NCM, preço e unidade; toast de sucesso</td><td><span class="api-tag">createProduto action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-16</td><td class="tc-desc">Editar preço de venda do produto</td><td class="tc-pre">Produto existente na listagem</td><td class="tc-exp">Novo preço refletido imediatamente na lista e no PDV</td><td><span class="api-tag">updateProduto action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-17</td><td class="tc-desc">Upload de foto do produto (R2 Cloudflare)</td><td class="tc-pre">Produto em edição, arquivo de imagem selecionado</td><td class="tc-exp">Imagem salva no R2, URL persistida no banco, exibida na lista</td><td><span class="api-tag">R2Uploader component</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-18</td><td class="tc-desc">Dashboard de estoque — quantidades críticas</td><td class="tc-pre">Módulo Dashboard Estoque aberto</td><td class="tc-exp">Produtos abaixo do mínimo destacados com alerta visual</td><td><span class="api-tag">UI — dashboard-estoque</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-19</td><td class="tc-desc">Excluir produto sem movimentações</td><td class="tc-pre">Produto sem pedidos ou entradas vinculadas</td><td class="tc-exp">Confirmação por modal, produto removido da lista</td><td><span class="api-tag">deleteProduto action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-14</td><td class="tc-desc">Listagem de produtos com busca e filtros</td><td class="tc-pre">Módulo Produtos &gt; Estoque aberto</td><td class="tc-exp">Tabela exibe código, nome, categoria, preço custo, preço venda, estoque e status; busca por nome/SKU/EAN funcional; filtro por categoria e status (Ativo/Inativo)</td><td><span class="api-tag">buscarProdutos action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-15</td><td class="tc-desc">Wizard step 1 — criar produto com nome, SKU e categoria</td><td class="tc-pre">Botão "Novo Produto" clicado, wizard aberto</td><td class="tc-exp">Step 1 exibe campos Nome, SKU (auto-gerado), Marca, Categoria, Descrição Resumida, Descrição Completa, toggle "Venda sem Estoque" e toggle "É Kit"; SKU gerado automaticamente</td><td><span class="api-tag">gerarCodigoProduto action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-16</td><td class="tc-desc">Wizard step 2 — preços com cálculo de margem e markup</td><td class="tc-pre">Step 2 do wizard aberto</td><td class="tc-exp">Campos Preço de Compra, Preço de Custo, Preço de Venda e Tabela de Preço exibidos; ao preencher custo e venda, margem (%) e markup (%) calculados automaticamente</td><td><span class="api-tag">UI — cálculo margem</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-17</td><td class="tc-desc">Wizard step 3 — estoque inicial, mínimo, máximo e logística</td><td class="tc-pre">Step 3 do wizard aberto</td><td class="tc-exp">Campos Estoque Inicial, Mínimo, Máximo, Localização, Peso (kg), Altura, Largura e Comprimento (cm) exibidos e salvos corretamente</td><td><span class="api-tag">criarProduto action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-18</td><td class="tc-desc">Wizard step 4 — informações fiscais (NCM, CST, CFOP)</td><td class="tc-pre">Step 4 do wizard aberto</td><td class="tc-exp">Campos NCM, CEST, CFOP, CST/CSOSN (agrupado), Origem (0-8), alíquotas ICMS/PIS/COFINS exibidos; produto salvo com dados fiscais corretos</td><td><span class="api-tag">criarProduto action — fiscal</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-83</td><td class="tc-desc">Wizard step 5 — upload de até 5 imagens via R2</td><td class="tc-pre">Step 5 do wizard, imagens selecionadas</td><td class="tc-exp">Até 5 imagens aceitas; imagem principal definível; preview exibido; URLs salvas no R2 Cloudflare e persistidas no banco</td><td><span class="api-tag">salvarImagemProduto action</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-84</td><td class="tc-desc">Editar produto — alteração de preço de venda</td><td class="tc-pre">Produto existente, ícone de edição clicado</td><td class="tc-exp">Wizard aberto em modo edição com dados pré-preenchidos; novo preço salvo, margem/markup recalculados, lista atualizada</td><td><span class="api-tag">editarProduto action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-85</td><td class="tc-desc">Duplicar produto — cópia com mesmo conteúdo</td><td class="tc-pre">Menu de ações do produto, opção "Duplicar"</td><td class="tc-exp">Novo produto criado com dados idênticos ao original (exceto SKU único gerado automaticamente); aparece na lista</td><td><span class="api-tag">duplicarProduto action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-86</td><td class="tc-desc">Ativar / Desativar produto (toggle)</td><td class="tc-pre">Produto ativo na listagem</td><td class="tc-exp">Status alterna entre Ativo e Inativo; badge atualizado na lista; produto inativo não aparece em buscas do PDV</td><td><span class="api-tag">toggleAtivoProduto action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-87</td><td class="tc-desc">Produto tipo Kit — adicionar e remover itens de composição</td><td class="tc-pre">Produto com toggle "É Kit" ativado; menu "Itens do Kit"</td><td class="tc-exp">Dialog permite buscar e adicionar produtos com quantidade; itens listados; remoção individual funcional; produto não pode ser adicionado como componente de si mesmo</td><td><span class="api-tag">adicionarItemKit / removerItemKit</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-88</td><td class="tc-desc">Variações / Grade — criar variação com cor, tamanho e preço adicional</td><td class="tc-pre">Menu de ações &gt; "Variações / Grade"</td><td class="tc-exp">Dialog exibe variações existentes; nova variação criada com Cor, Tamanho, SKU variação, Código de Barras, Preço Adicional e Estoque Inicial; salva corretamente</td><td><span class="api-tag">salvarVariacao action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-89</td><td class="tc-desc">Visualizar produto — dialog read-only com 5 abas</td><td class="tc-pre">Menu de ações &gt; "Visualizar"</td><td class="tc-exp">Dialog exibe 5 abas: Informações, Preços, Estoque/Logística, Fiscal, Mídia &amp; SEO; todos os campos visíveis sem edição; botão "Editar" abre wizard</td><td><span class="api-tag">buscarProdutoPorId action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-90</td><td class="tc-desc">Excluir produto sem movimentações</td><td class="tc-pre">Produto sem pedidos ou entradas vinculadas</td><td class="tc-exp">Confirmação por modal; soft delete (deletedAt preenchido); produto desaparece da lista</td><td><span class="api-tag">excluirProduto action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-91</td><td class="tc-desc">Exportar lista de produtos para XLSX</td><td class="tc-pre">Listagem de produtos com dados</td><td class="tc-exp">Arquivo .xlsx baixado com colunas: Código, Nome, Categoria, Marca, UN, Preço Custo, Preço Venda, Estoque, Est. Mínimo, Status, Filial</td><td><span class="api-tag">UI — export XLSX</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
+    <!-- ── FL-04: SERVIÇOS ── -->
     <div class="flow-card open" id="fl-serv-01">
       <div class="flow-header" onclick="toggleFlow('fl-serv-01')">
-        <div class="flow-info"><span class="flow-code">FL-04</span><span class="flow-name">Serviços — CRUD &amp; Tabs</span></div>
+        <div class="flow-info"><span class="flow-code">FL-04</span><span class="flow-name">Serviços — CRUD, Categorias &amp; Recursos</span></div>
+        <div class="flow-badges"><span class="badge badge-pass">8 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="flow-body">
+        <table class="tc-table">
+          <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="tc-code">TC-20</td><td class="tc-desc">Listagem de serviços com busca e filtros</td><td class="tc-pre">Módulo Produtos &gt; Serviços, aba "Itens"</td><td class="tc-exp">Tabela exibe Código, Nome, Descrição, Categoria, Preço (formatado), Duração (ex: "2h 30min") e Status; busca por nome/código funcional; filtro por categoria e status</td><td><span class="api-tag">buscarServicos action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-21</td><td class="tc-desc">Cadastrar serviço — wizard 3 passos</td><td class="tc-pre">Botão "Novo Serviço" clicado</td><td class="tc-exp">Step 1: Nome, Código (auto-gerado), Categoria, Descrição; Step 2: Preço, Custo Operacional, Duração em minutos; Step 3: revisão e toggle Ativo; serviço salvo e exibido na lista</td><td><span class="api-tag">criarServico action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-22</td><td class="tc-desc">Editar valor do serviço</td><td class="tc-pre">Serviço existente, ação "Editar"</td><td class="tc-exp">Wizard em modo edição com dados pré-preenchidos; novo valor salvo e refletido nas vendas subsequentes</td><td><span class="api-tag">editarServico action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-92</td><td class="tc-desc">Informações fiscais do serviço (código LC 116, ISS)</td><td class="tc-pre">Serviço em edição</td><td class="tc-exp">Campos de código de serviço LC 116, CSOSN, CFOP acessíveis e salvos; serviço emite NFS-e corretamente ao ser vendido</td><td><span class="api-tag">editarServico action — fiscal</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-93</td><td class="tc-desc">Duplicar serviço — cópia inativa criada</td><td class="tc-pre">Menu de ações &gt; "Duplicar"</td><td class="tc-exp">Novo serviço criado com mesmo conteúdo, status INATIVO e código único; aparece na listagem</td><td><span class="api-tag">duplicarServico action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-94</td><td class="tc-desc">Ativar / Desativar serviço</td><td class="tc-pre">Serviço ativo na listagem</td><td class="tc-exp">Toggle alterna status; badge atualizado; serviço inativo não aparece na seleção de vendas</td><td><span class="api-tag">toggleAtivoServico action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-95</td><td class="tc-desc">Categorias de serviço — criar com cor</td><td class="tc-pre">Aba "Categorias" de serviços, botão nova categoria</td><td class="tc-exp">Dialog com campos Nome, Descrição e seletor de cor (10 opções); categoria salva e exibida no grid com cor definida</td><td><span class="api-tag">criarCategoriaServico action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-96</td><td class="tc-desc">Exportar serviços para XLSX</td><td class="tc-pre">Listagem com serviços cadastrados</td><td class="tc-exp">Arquivo .xlsx baixado com colunas: Código, Nome, Categoria, Preço, Duração, Status</td><td><span class="api-tag">UI — export XLSX</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── FL-18: CATEGORIAS DE PRODUTOS ── -->
+    <div class="flow-card open" id="fl-cat-01">
+      <div class="flow-header" onclick="toggleFlow('fl-cat-01')">
+        <div class="flow-info"><span class="flow-code">FL-18</span><span class="flow-name">Categorias de Produtos</span></div>
+        <div class="flow-badges"><span class="badge badge-pass">4 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="flow-body">
+        <table class="tc-table">
+          <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="tc-code">TC-97</td><td class="tc-desc">Criar categoria de produto com cor</td><td class="tc-pre">Estoque &gt; aba "Categorias", botão nova categoria</td><td class="tc-exp">Dialog exibe campos Nome, Descrição e seletor de 10 cores; categoria salva, aparece no grid com indicador de cor e contador de produtos (0)</td><td><span class="api-tag">criarCategoria action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-98</td><td class="tc-desc">Editar nome e cor de categoria existente</td><td class="tc-pre">Categoria existente, dropdown &gt; "Editar"</td><td class="tc-exp">Dialog aberto com dados pré-preenchidos; alterações salvas; card na grid atualizado com novo nome e cor; produtos vinculados preservam associação</td><td><span class="api-tag">editarCategoria action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-99</td><td class="tc-desc">Excluir categoria sem produtos vinculados</td><td class="tc-pre">Categoria com 0 produtos</td><td class="tc-exp">Exclusão confirmada; categoria removida da grid sem erros</td><td><span class="api-tag">excluirCategoria action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-100</td><td class="tc-desc">Bloqueio de exclusão de categoria com produtos vinculados</td><td class="tc-pre">Categoria com produtos associados</td><td class="tc-exp">Tentativa de exclusão exibe aviso informando quantidade de produtos vinculados; exclusão bloqueada até reassociação</td><td><span class="api-tag">excluirCategoria — validation</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── FL-19: PROMOÇÕES ── -->
+    <div class="flow-card open" id="fl-promo-01">
+      <div class="flow-header" onclick="toggleFlow('fl-promo-01')">
+        <div class="flow-info"><span class="flow-code">FL-19</span><span class="flow-name">Promoções</span></div>
         <div class="flow-badges"><span class="badge badge-pass">5 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
       </div>
       <div class="flow-body">
         <table class="tc-table">
           <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
           <tbody>
-            <tr><td class="tc-code">TC-20</td><td class="tc-desc">Listagem de serviços</td><td class="tc-pre">Módulo Produtos &gt; Serviços aberto</td><td class="tc-exp">Lista de serviços com nome, valor e categoria exibidos</td><td><span class="api-tag">UI — /produtos/servicos</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-21</td><td class="tc-desc">Cadastrar novo serviço com código de serviço</td><td class="tc-pre">Modal de serviço aberto</td><td class="tc-exp">Serviço salvo com código LC 116, valor e descrição</td><td><span class="api-tag">createServico action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-22</td><td class="tc-desc">Editar valor do serviço</td><td class="tc-pre">Serviço existente na listagem</td><td class="tc-exp">Novo valor salvo, refletido nas vendas subsequentes</td><td><span class="api-tag">updateServico action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-23</td><td class="tc-desc">Tab de dados do serviço — informações fiscais</td><td class="tc-pre">Serviço aberto para edição, tab "Fiscal" clicada</td><td class="tc-exp">Campos tributários (ISS, CSOSN, CFOP) carregados corretamente</td><td><span class="api-tag">UI — tabs fiscal</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-24</td><td class="tc-desc">Excluir serviço sem vínculos</td><td class="tc-pre">Serviço sem vendas associadas</td><td class="tc-exp">Confirmação e remoção bem-sucedida da lista</td><td><span class="api-tag">deleteServico action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-101</td><td class="tc-desc">Criar promoção tipo Porcentagem com canais PDV e E-commerce</td><td class="tc-pre">Estoque &gt; aba "Promoções", botão nova promoção</td><td class="tc-exp">Dialog exibe campos Nome, Tipo (PORCENTAGEM), Valor (%), Data Início/Fim, Status, Canais (checkboxes: PDV, E-commerce, App, Marketplace, WhatsApp), Qtd. Mínima, Limite por Cliente, Usos Máximos; promoção salva com status ATIVO</td><td><span class="api-tag">criarPromocao action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-102</td><td class="tc-desc">Criar promoção tipo Compre X Leve Y</td><td class="tc-pre">Dialog de promoção, tipo "COMPRE_X_LEVE_Y" selecionado</td><td class="tc-exp">Campos específicos do tipo exibidos; promoção salva e listada com tipo correto e contagem de canais</td><td><span class="api-tag">criarPromocao action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-103</td><td class="tc-desc">Ativar / Desativar promoção</td><td class="tc-pre">Promoção existente na listagem</td><td class="tc-exp">Status alterna (ATIVO ↔ INATIVO); badge atualizado; promoção inativa não aplicada nas vendas</td><td><span class="api-tag">toggleStatusPromocao action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-104</td><td class="tc-desc">Duplicar promoção — cópia inativa criada</td><td class="tc-pre">Menu de ações &gt; "Duplicar"</td><td class="tc-exp">Nova promoção criada com mesmo conteúdo e status INATIVO; aparece na listagem com filtro "Todos"</td><td><span class="api-tag">duplicarPromocao action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-105</td><td class="tc-desc">Filtro de promoções por status (Agendado / Expirado)</td><td class="tc-pre">Promoções com datas início/fim configuradas</td><td class="tc-exp">Filtro "Agendado" exibe promoções com data início futura; filtro "Expirado" exibe promoções com data fim passada; badges de status corretos</td><td><span class="api-tag">buscarPromocoes action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── FL-20: TABELAS DE PREÇO ── -->
+    <div class="flow-card open" id="fl-tabpreco-01">
+      <div class="flow-header" onclick="toggleFlow('fl-tabpreco-01')">
+        <div class="flow-info"><span class="flow-code">FL-20</span><span class="flow-name">Tabelas de Preço</span></div>
+        <div class="flow-badges"><span class="badge badge-pass">4 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="flow-body">
+        <table class="tc-table">
+          <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="tc-code">TC-106</td><td class="tc-desc">Criar tabela de preço com nome e descrição</td><td class="tc-pre">Estoque &gt; aba "Tabelas de Preço", botão nova tabela</td><td class="tc-exp">Dialog exibe campos Nome (obrigatório), Descrição e toggle Ativo; tabela salva e listada com contagem de produtos vinculados (0)</td><td><span class="api-tag">criarTabelaPreco action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-107</td><td class="tc-desc">Vincular tabela de preço a um produto no wizard</td><td class="tc-pre">Tabela de preço ativa cadastrada; wizard step 2 de produto</td><td class="tc-exp">Campo "Tabela de Preço Associada" exibe tabelas ativas no select; produto salvo com tabela vinculada; contador de produtos da tabela incrementa</td><td><span class="api-tag">criarProduto — tabelaPrecoId</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-108</td><td class="tc-desc">Visualizar produtos vinculados à tabela</td><td class="tc-pre">Tabela com produtos associados; ação "Visualizar Produtos"</td><td class="tc-exp">Lista de produtos vinculados exibida com nome, SKU e preço de venda</td><td><span class="api-tag">buscarProdutosDaTabela action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-109</td><td class="tc-desc">Ativar / Desativar tabela de preço</td><td class="tc-pre">Tabela existente na listagem</td><td class="tc-exp">Toggle altera status; tabela inativa não aparece no select do wizard de produto</td><td><span class="api-tag">toggleAtivoTabelaPreco action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── FL-21: AJUSTE DE ESTOQUE & VARIAÇÕES ── -->
+    <div class="flow-card open" id="fl-ajuste-01">
+      <div class="flow-header" onclick="toggleFlow('fl-ajuste-01')">
+        <div class="flow-info"><span class="flow-code">FL-21</span><span class="flow-name">Ajuste de Estoque &amp; Multi-filial</span></div>
+        <div class="flow-badges"><span class="badge badge-pass">6 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="flow-body">
+        <table class="tc-table">
+          <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="tc-code">TC-110</td><td class="tc-desc">Ajuste individual de estoque — entrada com motivo "Compra"</td><td class="tc-pre">Dialog de ajuste aberto, modo individual</td><td class="tc-exp">Campos: busca de produto, tipo (entrada/saída/correção), quantidade, motivo (dropdown "Compra"), documento e observação; saldo atualizado após confirmação; movimentação registrada</td><td><span class="api-tag">ajustarEstoque action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-111</td><td class="tc-desc">Ajuste individual de estoque — saída com motivo "Perda/Quebra"</td><td class="tc-pre">Dialog de ajuste, tipo "saída" selecionado</td><td class="tc-exp">Motivos de saída disponíveis: Venda, Devolução Fornecedor, Perda/Quebra, Furto, Vencimento, Acerto (Falta), Uso Interno; saldo decrementado corretamente</td><td><span class="api-tag">ajustarEstoque action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-112</td><td class="tc-desc">Ajuste em lote — múltiplos produtos simultâneos</td><td class="tc-pre">Dialog de ajuste, aba "Lote" selecionada</td><td class="tc-exp">Interface permite adicionar vários produtos com tipo, quantidade e motivo individuais; todos os ajustes submetidos em uma única operação e saldos atualizados</td><td><span class="api-tag">ajustarEstoqueLote action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-113</td><td class="tc-desc">Consulta multi-filial — saldo de produto em todas as filiais</td><td class="tc-pre">Usuário Matriz; botão "Consultar Estoque" na listagem</td><td class="tc-exp">Dialog exibe saldo por filial para o produto selecionado; total agregado calculado corretamente; inclui filiais com estoque zero</td><td><span class="api-tag">buscarEstoqueTodasFiliais action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-114</td><td class="tc-desc">Transferência entre filiais — produto com estoque disponível</td><td class="tc-pre">Botão "Transferir entre Filiais"; filial origem com estoque</td><td class="tc-exp">Dialog exibe: seleção de filial origem/destino, busca de produtos na origem com saldo atual, quantidade a transferir, data prevista e observação; transferência registrada, saldo origem decrementado e destino incrementado imediatamente</td><td><span class="api-tag">criarTransferenciaEstoque action</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-115</td><td class="tc-desc">Seletor de filial — visualizar estoque de filial específica</td><td class="tc-pre">Usuário Matriz, dropdown de filial na listagem</td><td class="tc-exp">Ao selecionar filial, listagem atualiza exibindo apenas estoque daquela filial; SKUs, preços e quantidades corretos para a filial selecionada</td><td><span class="api-tag">buscarProdutos(filialIdOverride)</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── FL-22: DASHBOARD DE ESTOQUE ── -->
+    <div class="flow-card open" id="fl-dash-estoque">
+      <div class="flow-header" onclick="toggleFlow('fl-dash-estoque')">
+        <div class="flow-info"><span class="flow-code">FL-22</span><span class="flow-name">Dashboard de Estoque</span></div>
+        <div class="flow-badges"><span class="badge badge-pass">5 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="flow-body">
+        <table class="tc-table">
+          <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="tc-code">TC-116</td><td class="tc-desc">KPIs do dashboard — total de alertas, negativos e abaixo do mínimo</td><td class="tc-pre">Produtos com estoque zero ou abaixo do mínimo cadastrados</td><td class="tc-exp">Cards exibem corretamente: total de alertas, contagem de estoque negativo (vermelho) e contagem abaixo do mínimo (amarelo); valores atualizados ao clicar em "Atualizar"</td><td><span class="api-tag">buscarEstatisticasEstoque action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-117</td><td class="tc-desc">Lista de alertas — colunas e código de cores</td><td class="tc-pre">Dashboard de Estoque aberto</td><td class="tc-exp">Tabela exibe: Código, Produto, Categoria, Estoque Atual (vermelho se negativo, amarelo se abaixo do mínimo), Estoque Mínimo, Diferença (colorida), Status badge, Última Movimentação; negativos listados antes dos abaixo do mínimo</td><td><span class="api-tag">buscarAlertasEstoque action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-118</td><td class="tc-desc">Filtro de alertas por tipo (negativos / abaixo do mínimo)</td><td class="tc-pre">Lista de alertas com ambos os tipos</td><td class="tc-exp">Filtro "Negativos" exibe apenas produtos com estoque &lt; 0; filtro "Abaixo do Mínimo" exibe apenas estoque entre 0 e mínimo; busca por nome/código funcional com filtro ativo</td><td><span class="api-tag">buscarAlertasEstoque — filtro</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-119</td><td class="tc-desc">Ação rápida — ajustar estoque a partir do alerta</td><td class="tc-pre">Produto em alerta na lista do dashboard</td><td class="tc-exp">Botão de ajuste na linha do produto abre dialog de ajuste de estoque pré-selecionado com o produto; após ajuste, alerta some da lista se estoque normalizado</td><td><span class="api-tag">ajustarEstoque action via dashboard</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-120</td><td class="tc-desc">Exportar alertas de estoque para XLSX</td><td class="tc-pre">Dashboard com produtos em alerta</td><td class="tc-exp">Arquivo .xlsx baixado com colunas: Código, Produto, Categoria, Estoque Atual, Estoque Mínimo, Diferença, Status, Última Movimentação, Filial</td><td><span class="api-tag">UI — export XLSX dashboard</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -73,10 +173,11 @@
   </div>
 
   <div class="footer">
-    <div>Módulo: Produtos &amp; Serviços — FL-03, FL-04</div>
+    <div>Módulo: Produtos &amp; Serviços — FL-03, FL-04, FL-18, FL-19, FL-20, FL-21, FL-22</div>
     <div>POP-QA-001 · ERP Mirante · 23/06/2026</div>
   </div>
 </main>
+
 <script>function toggleFlow(id){ document.getElementById(id).classList.toggle('open') }</script>
 </body>
 </html>

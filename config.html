@@ -1,67 +1,104 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Configurações — Relatório de Testes ERP Mirante</title>
 <link rel="stylesheet" href="style.css"/>
+<script src="components.js"></script>
 </head>
 <body>
-<div class="header"><div class="header-inner"><div class="logo-area"><div class="logo-icon">M</div><div class="logo-text"><h1>ERP Mirante</h1><p>Relatório de Testes Manuais — Sistema Completo &nbsp;·&nbsp; POP-QA-001</p></div></div><div class="header-meta"><div><strong>Executor:</strong> ByStartup / Mirante</div><div><strong>Data:</strong> 23/06/2026</div><div><strong>Ambiente:</strong> Sandbox — Next.js 15 + PostgreSQL + K8Pay + Spedy</div><div><strong>Escopo:</strong> Módulos principais do ERP (fluxos críticos)</div></div></div></div>
-<nav class="nav-bar"><div class="nav-inner">
-  <a href="index.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> Visão Geral <span class="nav-badge">82</span></a>
-  <a href="auth.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Autenticação <span class="nav-badge">6</span></a>
-  <a href="pessoas.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Pessoas <span class="nav-badge">7</span></a>
-  <a href="produtos.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> Produtos &amp; Serviços <span class="nav-badge">11</span></a>
-  <a href="vendas.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Vendas <span class="nav-badge">16</span></a>
-  <a href="financeiro.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Financeiro <span class="nav-badge">13</span></a>
-  <a href="compras.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Compras <span class="nav-badge">8</span></a>
-  <a href="nfe.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Notas Fiscais <span class="nav-badge">13</span></a>
-  <a href="config.html" class="nav-btn active"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Configurações <span class="nav-badge">8</span></a>
-</div></nav>
-
 <main class="main">
+
   <div class="scoreboard">
-    <div class="score-card total"><div class="num">8</div><div class="lbl">Total</div></div>
-    <div class="score-card pass"><div class="num">8</div><div class="lbl">Aprovados</div></div>
+    <div class="score-card total"><div class="num">24</div><div class="lbl">Total</div></div>
+    <div class="score-card pass"><div class="num">24</div><div class="lbl">Aprovados</div></div>
     <div class="score-card fail"><div class="num">0</div><div class="lbl">Reprovados</div></div>
     <div class="score-card rate"><div class="num">100%</div><div class="lbl">Taxa</div></div>
   </div>
 
-  <div class="section-title">Casos de Teste — Configurações</div>
+  <div class="section-title">Casos de Teste — Configurações (4 fluxos)</div>
   <div class="accordion">
 
+    <!-- FL-16: USUÁRIOS & PERFIS -->
     <div class="flow-card open" id="fl-cfg-01">
       <div class="flow-header" onclick="toggleFlow('fl-cfg-01')">
         <div class="flow-info"><span class="flow-code">FL-16</span><span class="flow-name">Usuários &amp; Perfis de Acesso</span></div>
-        <div class="flow-badges"><span class="badge badge-pass">4 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
+        <div class="flow-badges"><span class="badge badge-pass">8 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
       </div>
       <div class="flow-body">
         <table class="tc-table">
           <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
           <tbody>
-            <tr><td class="tc-code">TC-75</td><td class="tc-desc">Criar novo usuário com perfil limitado</td><td class="tc-pre">Configurações &gt; Usuários, admin autenticado</td><td class="tc-exp">Usuário criado com e-mail, senha temporária e perfil atribuído</td><td><span class="api-tag">createUsuario action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-76</td><td class="tc-desc">Criar perfil com permissões customizadas</td><td class="tc-pre">Configurações &gt; Segurança &gt; Perfis</td><td class="tc-exp">Perfil salvo com conjunto de permissões definidas; usuários associados herdam restrições</td><td><span class="api-tag">createPerfil action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-77</td><td class="tc-desc">Alterar senha do usuário</td><td class="tc-pre">Usuário existente, admin ou próprio usuário</td><td class="tc-exp">Senha atualizada, sessão atual invalidada, novo login necessário</td><td><span class="api-tag">updateSenha action</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-78</td><td class="tc-desc">Desativar usuário — bloqueio de acesso</td><td class="tc-pre">Usuário ativo na listagem</td><td class="tc-exp">Usuário desativado não consegue autenticar, retorno de erro na tela de login</td><td><span class="api-tag">deactivateUsuario action</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-75</td><td class="tc-desc">Criar novo usuário com perfil e filiais permitidas</td><td class="tc-pre">Configurações &gt; Usuários; admin autenticado</td><td class="tc-exp">Formulário aceita: Nome, E-mail, CPF, Telefone, Senha Temporária, Role (ADMIN/MANAGER/OPERATOR), Perfil e Filiais Permitidas (com permissões por filial: visualizar/editar/excluir/transferir/consolidar); usuário criado e recebe e-mail de boas-vindas</td><td><span class="api-tag">createUsuario action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-76</td><td class="tc-desc">Criar perfil com permissões customizadas de módulos</td><td class="tc-pre">Aba "Perfis" em Configurações &gt; Usuários</td><td class="tc-exp">Formulário de Perfil aceita: Nome, Descrição, Nível de Acesso (ADMIN/MANAGER/OPERATOR), Módulos Permitidos (lista de módulos do ERP) e flags: apenasPropriaFilial, podeAlternarFiliais, podeDadosConsolidados, podeTransferirFiliais, podeExcluir; usuários vinculados ao perfil herdam restrições</td><td><span class="api-tag">createPerfil action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-77</td><td class="tc-desc">Alterar senha do usuário pelo admin</td><td class="tc-pre">Usuário existente; admin clica em "Alterar Senha"</td><td class="tc-exp">Nova senha definida; sessões ativas do usuário invalidadas; usuário deve fazer login novamente com a nova senha</td><td><span class="api-tag">updateSenha action</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-78</td><td class="tc-desc">Desativar usuário — bloqueio imediato de acesso</td><td class="tc-pre">Usuário ativo; toggle "Ativo" desligado</td><td class="tc-exp">Usuário desativado não consegue autenticar; sessão ativa encerrada; erro "Usuário inativo" exibido na tela de login; reativação restaura acesso normalmente</td><td><span class="api-tag">deactivateUsuario action</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-188</td><td class="tc-desc">Perfil com restrição de filial (apenasPropriaFilial)</td><td class="tc-pre">Perfil criado com flag apenasPropriaFilial = true; usuário vinculado a esse perfil</td><td class="tc-exp">Usuário enxerga apenas dados da filial padrão; seletor de filials não exibido; tentativa de acessar dados de outra filial via URL retorna 403</td><td><span class="api-tag">apenasPropriaFilial — auth guard</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-189</td><td class="tc-desc">Módulos permitidos por usuário — acesso restrito</td><td class="tc-pre">Usuário com modulosPermitidos = ['VENDAS', 'FINANCEIRO'] apenas</td><td class="tc-exp">Nav bar exibe apenas os módulos permitidos; rotas de outros módulos retornam 403; permissões herdadas do Perfil são sobrescritas pelos modulosPermitidos do usuário quando configurados diretamente</td><td><span class="api-tag">modulosPermitidos — middleware</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-190</td><td class="tc-desc">Cadastrar contador (role CONTADOR) na aba dedicada</td><td class="tc-pre">Aba "Contadores" em Configurações &gt; Usuários</td><td class="tc-exp">Formulário específico aceita: Nome, E-mail, CPF, Telefone, CRC e Escritório Contábil; contador salvo com role CONTADOR; aparece separado na aba "Contadores", não na aba "Usuários"; acesso restrito a módulos configurados</td><td><span class="api-tag">createContador action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-191</td><td class="tc-desc">Painel Monitor — registrar contador de acesso</td><td class="tc-pre">Painel Monitor aberto; aba "Contadores"</td><td class="tc-exp">Dialog para adicionar contador ao painel; role CONTADOR vinculada à empresa; contador exibido no card do Painel Monitor com informações de CRC e escritório; acesso ao painel sem dados financeiros completos</td><td><span class="api-tag">Painel Monitor — CONTADOR role</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
+    <!-- FL-17: EMPRESAS & CONFIGURAÇÕES GERAIS -->
     <div class="flow-card open" id="fl-cfg-02">
       <div class="flow-header" onclick="toggleFlow('fl-cfg-02')">
-        <div class="flow-info"><span class="flow-code">FL-17</span><span class="flow-name">Empresas, Filiais &amp; Configurações Gerais</span></div>
+        <div class="flow-info"><span class="flow-code">FL-17</span><span class="flow-name">Empresas, Filiais &amp; Integrações</span></div>
+        <div class="flow-badges"><span class="badge badge-pass">8 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="flow-body">
+        <table class="tc-table">
+          <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="tc-code">TC-79</td><td class="tc-desc">Editar dados da empresa (razão social, CNPJ, regime tributário)</td><td class="tc-pre">Configurações &gt; Empresas/Filiais aberto; admin da matriz</td><td class="tc-exp">Campos editáveis: Razão Social, Nome Fantasia, CNPJ (máscara XX.XXX.XXX/XXXX-XX), IE, IM, Regime Tributário (SIMPLES_NACIONAL/LUCRO_PRESUMIDO/LUCRO_REAL), Telefone, E-mail e endereço completo (CEP + ViaCEP); alterações refletidas nos documentos fiscais emitidos</td><td><span class="api-tag">updateEmpresa action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-80</td><td class="tc-desc">Upload e validação de certificado A1 digital</td><td class="tc-pre">Arquivo .pfx e senha do certificado disponíveis</td><td class="tc-exp">Upload do .pfx aceito; senha validada pelo Spedy; datas de emissão e validade exibidas; banner de alerta exibido quando certificado vence em &lt; 30 dias; status "Certificado Válido" confirmado no Painel Monitor</td><td><span class="api-tag">Spedy — cert upload + validação</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-81</td><td class="tc-desc">Configurar integração Spedy (chave API + teste de conexão)</td><td class="tc-pre">Painel Monitor &gt; aba Spedy; chave API sandbox disponível</td><td class="tc-exp">Campo de chave API salvo; botão "Testar Conexão" chama GET /v1/status do Spedy; sucesso exibe versão e status; falha exibe mensagem de erro específica; chave inválida não habilita emissão de NF</td><td><span class="api-tag">Spedy GET /v1/status</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-82</td><td class="tc-desc">Configurar conta digital K8Pay (intermediador + subconta)</td><td class="tc-pre">Painel Monitor &gt; aba Conta Digital; credenciais sandbox K8Pay</td><td class="tc-exp">Campos configuráveis: intermediador único no .env (global) + subconta por conta bancária (k8ContaOrigem, k8CpfOperador); teste de conexão retorna saldo do sandbox; isolamento por hash de contaOrigem garante segregação entre empresas</td><td><span class="api-tag">testarConexaoK8 — multiempresa</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-192</td><td class="tc-desc">Criar nova filial vinculada à matriz</td><td class="tc-pre">Aba Empresas/Filiais; admin da matriz; botão "Nova Filial"</td><td class="tc-exp">Formulário idêntico ao da empresa com tipo fixo FILIAL; filial criada vinculada à matrizId; aparece na lista de filiais; admin da matriz pode alternar para a filial e gerenciar dados</td><td><span class="api-tag">createFilial action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-193</td><td class="tc-desc">Ativar e desativar filial</td><td class="tc-pre">Filial ativa na listagem; toggle "Ativo" desligado</td><td class="tc-exp">Filial desativada não aparece no seletor de filial na navbar; dados da filial preservados; reativação restaura acesso normalmente; matriz permanece sempre ativa</td><td><span class="api-tag">toggleAtivoFilial action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-194</td><td class="tc-desc">Configurar SMTP de e-mail (Painel Monitor)</td><td class="tc-pre">Painel Monitor &gt; aba E-mail; dados SMTP sandbox disponíveis</td><td class="tc-exp">Campos: Host, Porta, Usuário, Senha, SSL (toggle), E-mail Remetente; botão "Enviar E-mail de Teste" envia mensagem para o endereço do admin; sucesso/falha exibidos com mensagem detalhada</td><td><span class="api-tag">Painel Monitor — SMTP config</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-195</td><td class="tc-desc">Dashboard principal — KPIs e gráficos com dados reais</td><td class="tc-pre">Sistema com vendas, contas e estoque cadastrados</td><td class="tc-exp">Dashboard exibe: vendas do mês, contas a receber/pagar, alertas de estoque baixo e alerta de certificado vencendo; gráficos renderizados sem erros; filtro por filial funcional para admin da matriz</td><td><span class="api-tag">UI — /dashboard</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FL-29: PLANO DE CONTAS -->
+    <div class="flow-card open" id="fl-pc-01">
+      <div class="flow-header" onclick="toggleFlow('fl-pc-01')">
+        <div class="flow-info"><span class="flow-code">FL-29</span><span class="flow-name">Plano de Contas</span></div>
         <div class="flow-badges"><span class="badge badge-pass">4 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
       </div>
       <div class="flow-body">
         <table class="tc-table">
           <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
           <tbody>
-            <tr><td class="tc-code">TC-79</td><td class="tc-desc">Editar dados da empresa (razão social, CNPJ)</td><td class="tc-pre">Configurações &gt; Empresas/Filiais aberto</td><td class="tc-exp">Dados atualizados e refletidos nos documentos fiscais emitidos</td><td><span class="api-tag">updateEmpresa action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-80</td><td class="tc-desc">Configurar certificado A1 digital</td><td class="tc-pre">Arquivo .pfx e senha disponíveis</td><td class="tc-exp">Certificado validado, datas de validade exibidas, NF-e habilitada</td><td><span class="api-tag">Spedy — cert upload</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-81</td><td class="tc-desc">Configurar integração K8Pay (conta digital)</td><td class="tc-pre">Credenciais sandbox K8Pay disponíveis</td><td class="tc-exp">Credenciais salvas, teste de conexão confirma integração ativa</td><td><span class="api-tag">UI — K8Pay config</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-82</td><td class="tc-desc">Dashboard principal — KPIs e gráficos</td><td class="tc-pre">Sistema com dados, usuário autenticado</td><td class="tc-exp">KPIs de vendas, financeiro e estoque renderizados com dados reais</td><td><span class="api-tag">UI — /dashboard</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-196</td><td class="tc-desc">Criar conta hierárquica (pai e filho)</td><td class="tc-pre">Configurações &gt; Plano de Contas; botão "Nova Conta"</td><td class="tc-exp">Formulário aceita: Código (ordenado numericamente), Nome, Tipo (RECEITA/DESPESA/ATIVO/PASSIVO/PATRIMONIO_LIQUIDO), Categoria (PAI/FILHO), Conta Pai (se FILHO) e flag AceitaLancamento; estrutura em árvore exibe contas filhas indentadas sob a conta pai com expand/collapse</td><td><span class="api-tag">createPlanoContas action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-197</td><td class="tc-desc">Filtro por tipo na árvore do plano de contas</td><td class="tc-pre">Plano de contas com contas de tipos variados</td><td class="tc-exp">Filtros disponíveis: Todos, Receita, Despesa, Ativo, Passivo, Patrimônio Líquido; busca livre por nome ou código; árvore recolhida/expandida preservada após filtro</td><td><span class="api-tag">buscarPlanoContas — tipo filter</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-198</td><td class="tc-desc">Editar conta e ativar/desativar</td><td class="tc-pre">Conta existente no plano; ação "Editar"</td><td class="tc-exp">Modal pré-preenchido; todos os campos editáveis exceto Código (imutável após criação); toggle Ativo desabilita a conta para novos lançamentos sem apagar histórico existente</td><td><span class="api-tag">editarPlanoContas action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-199</td><td class="tc-desc">Bloqueio de exclusão de conta com lançamentos</td><td class="tc-pre">Conta com contas a pagar/receber vinculadas</td><td class="tc-exp">Tentativa de exclusão exibe alerta: "Conta possui lançamentos financeiros vinculados — exclusão bloqueada"; sugestão de desativar ao invés de excluir; exclusão permitida apenas para contas sem nenhum lançamento histórico</td><td><span class="api-tag">excluirPlanoContas — dependency check</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FL-30: CENTRO DE CUSTOS -->
+    <div class="flow-card open" id="fl-cc-01">
+      <div class="flow-header" onclick="toggleFlow('fl-cc-01')">
+        <div class="flow-info"><span class="flow-code">FL-30</span><span class="flow-name">Centro de Custos</span></div>
+        <div class="flow-badges"><span class="badge badge-pass">4 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="flow-body">
+        <table class="tc-table">
+          <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="tc-code">TC-200</td><td class="tc-desc">Criar centro de custos com tipo, categoria e responsável</td><td class="tc-pre">Configurações &gt; Centro de Custos; botão "Novo Centro"</td><td class="tc-exp">Formulário aceita: Código, Nome, Tipo (Departamento/Projeto/Cliente/Fornecedor/Regional/Produto/Serviço/Outro), Categoria (Administrativo/Financeiro/Comercial/Marketing/TI/Operacional/RH/Logística/Produção/Outro), Descrição e Responsável (dropdown de usuários); centro salvo e disponível no seletor de contas a pagar/receber</td><td><span class="api-tag">createCentroCustos action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-201</td><td class="tc-desc">KPIs por centro — total de lançamentos, valor e percentual</td><td class="tc-pre">Centro de custos com lançamentos financeiros vinculados</td><td class="tc-exp">Card do centro exibe: Total de Lançamentos, Valor Total, Saldo Líquido e Percentual de Execução (barra de progresso); último lançamento com data; dados reais dos lançamentos de contas a pagar/receber do centro</td><td><span class="api-tag">buscarKpisCentroCustos action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-202</td><td class="tc-desc">Exportar e importar centros de custos (CSV)</td><td class="tc-pre">Centros cadastrados; botão "Exportar" clicado</td><td class="tc-exp">Arquivo CSV/XLSX exportado com todos os campos; importação via arquivo aceita linhas novas e atualiza existentes por Código; erros de validação exibidos por linha sem interromper importação das demais</td><td><span class="api-tag">exportarCentrosCustos / importarCentrosCustos</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-203</td><td class="tc-desc">Filtros e ativar/desativar centro de custos</td><td class="tc-pre">Centros com tipos e categorias variados</td><td class="tc-exp">Filtros: Status (Ativo/Inativo), Tipo e Categoria funcionam em combinação; busca livre por Nome ou Código; toggle "Ativo" desabilita centro para novos lançamentos; histórico preservado</td><td><span class="api-tag">buscarCentrosCustos — filtros</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -70,8 +107,8 @@
   </div>
 
   <div class="footer">
-    <div>Módulo: Configurações — FL-16, FL-17</div>
-    <div>POP-QA-001 · ERP Mirante · 23/06/2026</div>
+    <div>Módulo: Configurações — FL-16, FL-17, FL-29, FL-30</div>
+    <div>POP-QA-001 · ERP Mirante · 20/06/2026</div>
   </div>
 </main>
 <script>function toggleFlow(id){ document.getElementById(id).classList.toggle('open') }</script>

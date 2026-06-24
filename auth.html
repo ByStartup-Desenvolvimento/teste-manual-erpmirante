@@ -5,75 +5,78 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Autenticação — Relatório de Testes ERP Mirante</title>
 <link rel="stylesheet" href="style.css"/>
+<script src="components.js"></script>
 </head>
 <body>
-
-<div class="header">
-  <div class="header-inner">
-    <div class="logo-area">
-      <div class="logo-icon">M</div>
-      <div class="logo-text">
-        <h1>ERP Mirante</h1>
-        <p>Relatório de Testes Manuais — Sistema Completo &nbsp;·&nbsp; POP-QA-001</p>
-      </div>
-    </div>
-    <div class="header-meta">
-      <div><strong>Executor:</strong> ByStartup / Mirante</div>
-      <div><strong>Data:</strong> 23/06/2026</div>
-      <div><strong>Ambiente:</strong> Sandbox — Next.js 15 + PostgreSQL + K8Pay + Spedy</div>
-      <div><strong>Escopo:</strong> Módulos principais do ERP (fluxos críticos)</div>
-    </div>
-  </div>
-</div>
-
-<nav class="nav-bar">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> Visão Geral <span class="nav-badge">82</span></a>
-    <a href="auth.html" class="nav-btn active"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Autenticação <span class="nav-badge">6</span></a>
-    <a href="pessoas.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Pessoas <span class="nav-badge">7</span></a>
-    <a href="produtos.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> Produtos &amp; Serviços <span class="nav-badge">11</span></a>
-    <a href="vendas.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Vendas <span class="nav-badge">16</span></a>
-    <a href="financeiro.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Financeiro <span class="nav-badge">13</span></a>
-    <a href="compras.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Compras <span class="nav-badge">8</span></a>
-    <a href="nfe.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Notas Fiscais <span class="nav-badge">13</span></a>
-    <a href="config.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Configurações <span class="nav-badge">8</span></a>
-  </div>
-</nav>
 
 <main class="main">
 
   <div class="scoreboard">
-    <div class="score-card total"><div class="num">6</div><div class="lbl">Total</div></div>
-    <div class="score-card pass"><div class="num">6</div><div class="lbl">Aprovados</div></div>
+    <div class="score-card total"><div class="num">16</div><div class="lbl">Total</div></div>
+    <div class="score-card pass"><div class="num">16</div><div class="lbl">Aprovados</div></div>
     <div class="score-card fail"><div class="num">0</div><div class="lbl">Reprovados</div></div>
     <div class="score-card rate"><div class="num">100%</div><div class="lbl">Taxa</div></div>
   </div>
 
-  <div class="section-title">Casos de Teste — Autenticação &amp; Sessão</div>
+  <div class="section-title">Casos de Teste — Autenticação (3 fluxos)</div>
   <div class="accordion">
 
+    <!-- FL-01: LOGIN & SESSÃO -->
     <div class="flow-card open" id="fl-auth-01">
       <div class="flow-header" onclick="toggleFlow('fl-auth-01')">
-        <div class="flow-info">
-          <span class="flow-code">FL-01</span>
-          <span class="flow-name">Login &amp; Sessão JWT</span>
-        </div>
-        <div class="flow-badges">
-          <span class="badge badge-pass">6 ✓</span>
-          <span class="badge badge-fail">0 ✗</span>
-          <span class="chevron">▼</span>
-        </div>
+        <div class="flow-info"><span class="flow-code">FL-01</span><span class="flow-name">Login &amp; Sessão JWT</span></div>
+        <div class="flow-badges"><span class="badge badge-pass">9 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
       </div>
       <div class="flow-body">
         <table class="tc-table">
           <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
           <tbody>
-            <tr><td class="tc-code">TC-01</td><td class="tc-desc">Login com credenciais válidas</td><td class="tc-pre">Usuário cadastrado e ativo</td><td class="tc-exp">Redirecionamento ao dashboard, sessão JWT criada</td><td><span class="api-tag">POST /api/auth/signin</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-02</td><td class="tc-desc">Login com senha incorreta</td><td class="tc-pre">Credencial inválida fornecida</td><td class="tc-exp">Mensagem de erro amigável, sem redirecionamento</td><td><span class="api-tag">NextAuth callback</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-03</td><td class="tc-desc">Logout limpa sessão</td><td class="tc-pre">Usuário autenticado</td><td class="tc-exp">Cookie de sessão removido, retorno à tela de login</td><td><span class="api-tag">POST /api/auth/signout</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-04</td><td class="tc-desc">Acesso a rota protegida sem autenticação</td><td class="tc-pre">Usuário não autenticado tenta acessar /dashboard</td><td class="tc-exp">Redirecionamento automático para /login</td><td><span class="api-tag">middleware.ts</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-05</td><td class="tc-desc">Isolamento multi-empresa (empresaId)</td><td class="tc-pre">Usuário de empresa A autenticado</td><td class="tc-exp">Dados retornados pertencem apenas à empresa A</td><td><span class="api-tag">session.user.empresaId</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-06</td><td class="tc-desc">Controle de acesso por perfil (role)</td><td class="tc-pre">Usuário com perfil restrito</td><td class="tc-exp">Menus e rotas proibidas ocultados/bloqueados conforme perfil</td><td><span class="api-tag">UI — sidebar</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-01</td><td class="tc-desc">Login com credenciais válidas</td><td class="tc-pre">Usuário cadastrado e ativo no sistema</td><td class="tc-exp">Redirecionamento ao dashboard, sessão JWT criada, cookie de sessão gravado</td><td><span class="api-tag">POST /api/auth/signin</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-02</td><td class="tc-desc">Login com senha incorreta</td><td class="tc-pre">Usuário existente, senha errada fornecida</td><td class="tc-exp">Mensagem de erro amigável exibida, sem redirecionamento, campo de senha limpo</td><td><span class="api-tag">NextAuth credentials callback</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-03</td><td class="tc-desc">Login com e-mail em formato inválido</td><td class="tc-pre">Campo e-mail preenchido sem "@" ou TLD</td><td class="tc-exp">Validação HTML5/frontend bloqueia envio com mensagem inline; requisição não chega ao servidor</td><td><span class="api-tag">UI — validação frontend</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-04</td><td class="tc-desc">Login com campos em branco</td><td class="tc-pre">Formulário de login vazio, botão clicado</td><td class="tc-exp">Campos obrigatórios destacados; botão permanece desabilitado ou exibe erro de preenchimento</td><td><span class="api-tag">UI — required fields</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-05</td><td class="tc-desc">Login com usuário desativado</td><td class="tc-pre">Usuário com status INATIVO no banco</td><td class="tc-exp">Mensagem específica informando conta inativa; sessão não criada</td><td><span class="api-tag">NextAuth — user.ativo check</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-06</td><td class="tc-desc">Logout limpa sessão completamente</td><td class="tc-pre">Usuário autenticado na aplicação</td><td class="tc-exp">Cookie de sessão removido, retorno à tela de login, acesso direto à URL anterior redireciona novamente para login</td><td><span class="api-tag">POST /api/auth/signout</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-07</td><td class="tc-desc">Sessão expirada — redirecionamento automático</td><td class="tc-pre">Sessão JWT expirada (simulada ou aguardada)</td><td class="tc-exp">Próxima requisição redireciona para /login; após novo login, retorna à URL original</td><td><span class="api-tag">middleware.ts — token exp check</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-08</td><td class="tc-desc">Acesso a rota protegida sem autenticação</td><td class="tc-pre">Usuário não autenticado tenta acessar /dashboard diretamente</td><td class="tc-exp">Middleware intercepta e redireciona para /login sem exibir conteúdo protegido</td><td><span class="api-tag">middleware.ts — matcher config</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-09</td><td class="tc-desc">Isolamento multi-empresa (empresaId na sessão)</td><td class="tc-pre">Usuário de empresa A autenticado</td><td class="tc-exp">Todas as queries filtram por empresaId da sessão; dados de empresa B não acessíveis em nenhum endpoint</td><td><span class="api-tag">session.user.empresaId</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FL-23: CADASTRO DE USUÁRIO -->
+    <div class="flow-card open" id="fl-auth-02">
+      <div class="flow-header" onclick="toggleFlow('fl-auth-02')">
+        <div class="flow-info"><span class="flow-code">FL-23</span><span class="flow-name">Cadastro &amp; Gestão de Usuários</span></div>
+        <div class="flow-badges"><span class="badge badge-pass">4 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="flow-body">
+        <table class="tc-table">
+          <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="tc-code">TC-121</td><td class="tc-desc">Admin cadastra novo usuário com e-mail, nome e perfil</td><td class="tc-pre">Configurações &gt; Usuários, autenticado como admin</td><td class="tc-exp">Formulário exige Nome, E-mail e Perfil; usuário criado com senha temporária gerada automaticamente; e-mail de boas-vindas disparado; usuário aparece na listagem com status ATIVO</td><td><span class="api-tag">createUsuario action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-122</td><td class="tc-desc">Bloqueio de cadastro com e-mail já existente</td><td class="tc-pre">E-mail já vinculado a outro usuário da empresa</td><td class="tc-exp">Mensagem de erro "E-mail já cadastrado"; usuário não duplicado no banco</td><td><span class="api-tag">createUsuario — unique constraint</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-123</td><td class="tc-desc">Primeiro acesso com senha temporária</td><td class="tc-pre">Usuário recém-criado faz login com senha temporária</td><td class="tc-exp">Login realizado com sucesso; sistema exibe modal ou redireciona para tela de troca de senha obrigatória antes de acessar o dashboard</td><td><span class="api-tag">session.user.primeiroAcesso flag</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-124</td><td class="tc-desc">Controle de acesso por perfil — menus e rotas</td><td class="tc-pre">Usuário com perfil restrito (ex: somente PDV) autenticado</td><td class="tc-exp">Sidebar exibe apenas módulos permitidos pelo perfil; acesso direto via URL a rotas proibidas retorna 403 ou redireciona; nenhum dado sensível exposto</td><td><span class="api-tag">UI — sidebar + middleware role check</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FL-24: RECUPERAÇÃO DE SENHA -->
+    <div class="flow-card open" id="fl-auth-03">
+      <div class="flow-header" onclick="toggleFlow('fl-auth-03')">
+        <div class="flow-info"><span class="flow-code">FL-24</span><span class="flow-name">Recuperação de Senha</span></div>
+        <div class="flow-badges"><span class="badge badge-pass">3 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="flow-body">
+        <table class="tc-table">
+          <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="tc-code">TC-125</td><td class="tc-desc">Solicitar recuperação de senha — e-mail existente</td><td class="tc-pre">Tela de login, link "Esqueci minha senha" clicado; e-mail válido inserido</td><td class="tc-exp">E-mail com link de recuperação enviado via SMTP configurado; mensagem de confirmação exibida na tela; token armazenado no banco com expiração de 1h</td><td><span class="api-tag">POST /api/auth/reset-password</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-126</td><td class="tc-desc">Redefinir senha com token válido</td><td class="tc-pre">Link de recuperação aberto dentro do prazo de validade</td><td class="tc-exp">Formulário exige nova senha e confirmação; validação de força de senha aplicada (mínimo 8 chars); senha atualizada no banco com hash bcrypt; token invalidado após uso; login com nova senha funcional</td><td><span class="api-tag">PUT /api/auth/reset-password/[token]</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-127</td><td class="tc-desc">Token de recuperação expirado ou já utilizado</td><td class="tc-pre">Link de recuperação com token vencido (&gt;1h) ou já usado</td><td class="tc-exp">Página exibe mensagem clara de token inválido/expirado; botão "Solicitar novo link" disponível; senha não alterada</td><td><span class="api-tag">token.expiresAt check</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -82,14 +85,12 @@
   </div>
 
   <div class="footer">
-    <div>Módulo: Autenticação &amp; Sessão — FL-01</div>
-    <div>POP-QA-001 · ERP Mirante · 23/06/2026</div>
+    <div>Módulo: Autenticação — FL-01, FL-23, FL-24</div>
+    <div>POP-QA-001 · ERP Mirante · 20/06/2026</div>
   </div>
 
 </main>
 
-<script>
-function toggleFlow(id){ document.getElementById(id).classList.toggle('open') }
-</script>
+<script>function toggleFlow(id){ document.getElementById(id).classList.toggle('open') }</script>
 </body>
 </html>

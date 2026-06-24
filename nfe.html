@@ -1,86 +1,86 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Notas Fiscais — Relatório de Testes ERP Mirante</title>
 <link rel="stylesheet" href="style.css"/>
+<script src="components.js"></script>
 </head>
 <body>
-<div class="header"><div class="header-inner"><div class="logo-area"><div class="logo-icon">M</div><div class="logo-text"><h1>ERP Mirante</h1><p>Relatório de Testes Manuais — Sistema Completo &nbsp;·&nbsp; POP-QA-001</p></div></div><div class="header-meta"><div><strong>Executor:</strong> ByStartup / Mirante</div><div><strong>Data:</strong> 23/06/2026</div><div><strong>Ambiente:</strong> Sandbox — Next.js 15 + PostgreSQL + K8Pay + Spedy</div><div><strong>Escopo:</strong> Módulos principais do ERP (fluxos críticos)</div></div></div></div>
-<nav class="nav-bar"><div class="nav-inner">
-  <a href="index.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> Visão Geral <span class="nav-badge">82</span></a>
-  <a href="auth.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Autenticação <span class="nav-badge">6</span></a>
-  <a href="pessoas.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Pessoas <span class="nav-badge">7</span></a>
-  <a href="produtos.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> Produtos &amp; Serviços <span class="nav-badge">11</span></a>
-  <a href="vendas.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Vendas <span class="nav-badge">16</span></a>
-  <a href="financeiro.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Financeiro <span class="nav-badge">13</span></a>
-  <a href="compras.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Compras <span class="nav-badge">8</span></a>
-  <a href="nfe.html" class="nav-btn active"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Notas Fiscais <span class="nav-badge">13</span></a>
-  <a href="config.html" class="nav-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Configurações <span class="nav-badge">8</span></a>
-</div></nav>
-
 <main class="main">
+
   <div class="scoreboard">
-    <div class="score-card total"><div class="num">13</div><div class="lbl">Total</div></div>
-    <div class="score-card pass"><div class="num">13</div><div class="lbl">Aprovados</div></div>
+    <div class="score-card total"><div class="num">21</div><div class="lbl">Total</div></div>
+    <div class="score-card pass"><div class="num">21</div><div class="lbl">Aprovados</div></div>
     <div class="score-card fail"><div class="num">0</div><div class="lbl">Reprovados</div></div>
     <div class="score-card rate"><div class="num">100%</div><div class="lbl">Taxa</div></div>
   </div>
 
-  <div class="section-title">Casos de Teste — Notas Fiscais (Spedy API)</div>
+  <div class="section-title">Casos de Teste — Notas Fiscais (3 fluxos)</div>
   <div class="accordion">
 
+    <!-- FL-13: NF-e -->
     <div class="flow-card open" id="fl-nfe-01">
       <div class="flow-header" onclick="toggleFlow('fl-nfe-01')">
         <div class="flow-info"><span class="flow-code">FL-13</span><span class="flow-name">NF-e (Nota Fiscal Eletrônica)</span></div>
-        <div class="flow-badges"><span class="badge badge-pass">6 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
+        <div class="flow-badges"><span class="badge badge-pass">11 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
       </div>
       <div class="flow-body">
         <table class="tc-table">
           <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
           <tbody>
-            <tr><td class="tc-code">TC-62</td><td class="tc-desc">Teste de conexão Spedy</td><td class="tc-pre">Chave API Spedy sandbox configurada</td><td class="tc-exp">Conexão confirmada, certificado A1 reconhecido pelo Spedy</td><td><span class="api-tag">GET /v1/status</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-63</td><td class="tc-desc">Emitir NF-e de produto via pedido de venda</td><td class="tc-pre">Pedido confirmado, cliente com CPF/CNPJ, produtos com NCM</td><td class="tc-exp">NF-e transmitida ao SEFAZ sandbox, chave de acesso retornada</td><td><span class="api-tag">POST Spedy /v1/nfe</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-64</td><td class="tc-desc">Polling de autorização da NF-e</td><td class="tc-pre">NF-e enviada, aguardando retorno SEFAZ</td><td class="tc-exp">Status atualizado para AUTORIZADA ao receber resposta do SEFAZ</td><td><span class="api-tag">GET Spedy /v1/nfe/{id}</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-65</td><td class="tc-desc">Download do XML da NF-e autorizada</td><td class="tc-pre">NF-e com status AUTORIZADA</td><td class="tc-exp">XML válido baixado e disponível para o usuário</td><td><span class="api-tag">GET Spedy /v1/nfe/{id}/xml</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-66</td><td class="tc-desc">Download do DANFE (PDF) da NF-e</td><td class="tc-pre">NF-e autorizada</td><td class="tc-exp">PDF do DANFE gerado e aberto no navegador sem erros</td><td><span class="api-tag">GET Spedy /v1/nfe/{id}/pdf</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-67</td><td class="tc-desc">Cancelamento de NF-e dentro do prazo</td><td class="tc-pre">NF-e autorizada, dentro de 24h</td><td class="tc-exp">Cancelamento registrado no SEFAZ, status → CANCELADA</td><td><span class="api-tag">DELETE Spedy /v1/nfe/{id}</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-62</td><td class="tc-desc">Teste de conexão Spedy</td><td class="tc-pre">Chave API Spedy sandbox configurada</td><td class="tc-exp">Conexão confirmada; certificado A1 reconhecido pelo Spedy; mensagem de sucesso exibida</td><td><span class="api-tag">GET /v1/status</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-63</td><td class="tc-desc">Emitir NF-e via pedido de venda confirmado</td><td class="tc-pre">Pedido CONFIRMADO; cliente com CPF/CNPJ; produtos com NCM e CFOP configurados</td><td class="tc-exp">NF-e transmitida ao SEFAZ sandbox; chave de acesso (44 dígitos) retornada; status → ENVIADA</td><td><span class="api-tag">POST Spedy /v1/nfe</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-64</td><td class="tc-desc">Polling de autorização — status AUTORIZADA</td><td class="tc-pre">NF-e com status ENVIADA ou PENDENTE</td><td class="tc-exp">Consulta periódica ao Spedy; ao receber resposta do SEFAZ: status → AUTORIZADA, protocolo de autorização salvo</td><td><span class="api-tag">GET Spedy /v1/nfe/{id}</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-65</td><td class="tc-desc">Download do XML da NF-e autorizada</td><td class="tc-pre">NF-e com status AUTORIZADA</td><td class="tc-exp">XML válido baixado com nome no padrão chave.xml; conteúdo íntegro com assinatura digital</td><td><span class="api-tag">GET Spedy /v1/nfe/{id}/xml</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-66</td><td class="tc-desc">Download do DANFE (PDF)</td><td class="tc-pre">NF-e AUTORIZADA</td><td class="tc-exp">PDF do DANFE gerado pelo Spedy; abre no navegador sem erros; dados da nota visíveis (número, valor, destinatário)</td><td><span class="api-tag">GET Spedy /v1/nfe/{id}/pdf</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-67</td><td class="tc-desc">Cancelar NF-e — justificativa mínima 15 caracteres</td><td class="tc-pre">NF-e AUTORIZADA dentro do prazo; ação "Cancelar" acionada</td><td class="tc-exp">Dialog exige justificativa; envio bloqueado se texto tiver menos de 15 chars; após cancelamento: status → CANCELADA, motivoCancelamento salvo</td><td><span class="api-tag">DELETE Spedy /v1/nfe/{id}</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-153</td><td class="tc-desc">Emitir NF-e pelo formulário próprio do módulo</td><td class="tc-pre">Módulo Notas Fiscais; botão "Nova Nota" → tipo NF-e</td><td class="tc-exp">Formulário exibe campos: natureza da operação, operação (ENTRADA/SAÍDA), forma de pagamento, destinatário, itens (código, NCM, CFOP, qtd., valor) e observações; NF-e salva como RASCUNHO antes de transmitir</td><td><span class="api-tag">criarNotaFiscal action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-154</td><td class="tc-desc">Enviar NF-e autorizada por e-mail</td><td class="tc-pre">NF-e com status AUTORIZADA; ação "Enviar por E-mail"</td><td class="tc-exp">E-mail enviado via SMTP configurado com XML e DANFE anexados; mensagem de confirmação exibida; disponível apenas para notas AUTORIZADAS</td><td><span class="api-tag">enviarEmailNota action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-155</td><td class="tc-desc">Cards de resumo da listagem (total, autorizadas, pendentes, valor efetivo)</td><td class="tc-pre">Módulo Notas Fiscais com notas em status variados</td><td class="tc-exp">4 cards exibidos: Total de Notas, Autorizadas, Pendentes e Valor Efetivo (exclui canceladas/rejeitadas/denegadas); valores atualizados ao aplicar filtros</td><td><span class="api-tag">buscarNotasFiscais action</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-156</td><td class="tc-desc">Filtro por status na listagem de notas</td><td class="tc-pre">Notas com status variados cadastradas</td><td class="tc-exp">Filtros disponíveis: Todas, Autorizada, Pendente, Cancelada, Denegada, Rejeitada; listagem atualizada ao selecionar; busca livre por número, cliente ou CNPJ funcional em conjunto com filtro</td><td><span class="api-tag">buscarNotasFiscais — status filter</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-157</td><td class="tc-desc">Exportar listagem de notas para XLSX</td><td class="tc-pre">Listagem com notas; botão de exportação clicado</td><td class="tc-exp">Arquivo .xlsx com colunas: Número, Série, Data, Cliente, CNPJ, Natureza, Tipo, Valor, Status (+ Filial se matriz); header azul; rodapé com total</td><td><span class="api-tag">UI — export XLSX</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
+    <!-- FL-14: NFC-e -->
     <div class="flow-card open" id="fl-nfce-01">
       <div class="flow-header" onclick="toggleFlow('fl-nfce-01')">
-        <div class="flow-info"><span class="flow-code">FL-14</span><span class="flow-name">NFC-e (Nota Fiscal ao Consumidor)</span></div>
-        <div class="flow-badges"><span class="badge badge-pass">3 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
-      </div>
-      <div class="flow-body">
-        <table class="tc-table">
-          <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
-          <tbody>
-            <tr><td class="tc-code">TC-68</td><td class="tc-desc">Emitir NFC-e ao finalizar venda PDV</td><td class="tc-pre">Venda finalizada no PDV, certificado configurado</td><td class="tc-exp">NFC-e transmitida, chave de acesso vinculada ao PedidoVenda</td><td><span class="api-tag">POST Spedy /v1/nfce</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-69</td><td class="tc-desc">QR Code da NFC-e exibido na tela</td><td class="tc-pre">NFC-e autorizada</td><td class="tc-exp">QR Code válido exibido para o consumidor, DANFE NFC-e imprimível</td><td><span class="api-tag">Spedy — qrCode field</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-70</td><td class="tc-desc">NFC-e em contingência (modo offline)</td><td class="tc-pre">SEFAZ indisponível temporariamente</td><td class="tc-exp">Sistema registra contingência, transmite automaticamente ao restabelecer</td><td><span class="api-tag">Spedy — contingência</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="flow-card open" id="fl-nfs-01">
-      <div class="flow-header" onclick="toggleFlow('fl-nfs-01')">
-        <div class="flow-info"><span class="flow-code">FL-15</span><span class="flow-name">NFS-e (Nota de Serviço)</span></div>
+        <div class="flow-info"><span class="flow-code">FL-14</span><span class="flow-name">NFC-e (Nota ao Consumidor)</span></div>
         <div class="flow-badges"><span class="badge badge-pass">4 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
       </div>
       <div class="flow-body">
         <table class="tc-table">
           <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
           <tbody>
-            <tr><td class="tc-code">TC-71</td><td class="tc-desc">Emitir NFS-e de serviço via pedido</td><td class="tc-pre">Pedido com serviços, código LC 116 configurado, cliente com CPF/CNPJ</td><td class="tc-exp">NFS-e enviada à prefeitura via Spedy, número da nota retornado</td><td><span class="api-tag">POST Spedy /v1/nfse</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-72</td><td class="tc-desc">Download PDF da NFS-e</td><td class="tc-pre">NFS-e autorizada pela prefeitura</td><td class="tc-exp">PDF da NFS-e gerado e disponibilizado ao usuário</td><td><span class="api-tag">GET Spedy /v1/nfse/{id}/pdf</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-73</td><td class="tc-desc">Bloqueio de emissão sem certificado A1</td><td class="tc-pre">Certificado não configurado</td><td class="tc-exp">Botão de emissão desabilitado com mensagem informativa clara</td><td><span class="api-tag">UI — cert check</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
-            <tr><td class="tc-code">TC-74</td><td class="tc-desc">Webhook Spedy — confirmação assíncrona</td><td class="tc-pre">Nota em processamento assíncrono</td><td class="tc-exp">Webhook recebido atualiza status da nota no ERP automaticamente</td><td><span class="api-tag">POST /api/webhooks/spedy</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-68</td><td class="tc-desc">Emitir NFC-e ao finalizar venda PDV</td><td class="tc-pre">Venda finalizada no PDV; certificado A1 configurado</td><td class="tc-exp">NFC-e transmitida ao SEFAZ sandbox; chave de acesso vinculada ao PedidoVenda; status → AUTORIZADA</td><td><span class="api-tag">POST Spedy /v1/nfce</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-69</td><td class="tc-desc">QR Code da NFC-e exibido para o consumidor</td><td class="tc-pre">NFC-e AUTORIZADA</td><td class="tc-exp">QR Code gerado e exibido na tela; DANFE NFC-e imprimível; dados legíveis (valor, estabelecimento)</td><td><span class="api-tag">Spedy — qrCode field</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-70</td><td class="tc-desc">NFC-e em contingência (SEFAZ indisponível)</td><td class="tc-pre">SEFAZ temporariamente fora do ar</td><td class="tc-exp">Venda registrada em modo contingência; NFC-e transmitida automaticamente ao restabelecer conexão</td><td><span class="api-tag">Spedy — contingência</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-158</td><td class="tc-desc">Alerta de certificado ausente ou vencido no módulo</td><td class="tc-pre">Certificado não configurado ou com validade expirada</td><td class="tc-exp">Banner informativo exibido no topo da listagem com link para "Painel Monitor → Certificado Digital"; emissão de novas notas bloqueada; alerta também aparece quando certificado vence em 7 dias</td><td><span class="api-tag">UI — cert alert banner</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FL-15: NFS-e -->
+    <div class="flow-card open" id="fl-nfs-01">
+      <div class="flow-header" onclick="toggleFlow('fl-nfs-01')">
+        <div class="flow-info"><span class="flow-code">FL-15</span><span class="flow-name">NFS-e (Nota de Serviço)</span></div>
+        <div class="flow-badges"><span class="badge badge-pass">6 ✓</span><span class="badge badge-fail">0 ✗</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="flow-body">
+        <table class="tc-table">
+          <thead><tr><th>TC</th><th>Descrição</th><th>Pré-condição</th><th>Resultado Esperado</th><th>Evidência</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="tc-code">TC-71</td><td class="tc-desc">Emitir NFS-e via pedido com serviços</td><td class="tc-pre">Pedido com itens de serviço; código LC 116 configurado no serviço; cliente com CPF/CNPJ</td><td class="tc-exp">NFS-e enviada à prefeitura via Spedy; número da nota retornado; status → AUTORIZADA</td><td><span class="api-tag">POST Spedy /v1/nfse</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-72</td><td class="tc-desc">Download do PDF da NFS-e autorizada</td><td class="tc-pre">NFS-e AUTORIZADA pela prefeitura</td><td class="tc-exp">PDF gerado pelo Spedy; abre no navegador; dados do prestador e tomador visíveis</td><td><span class="api-tag">GET Spedy /v1/nfse/{id}/pdf</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-73</td><td class="tc-desc">Bloqueio de emissão sem certificado A1</td><td class="tc-pre">Certificado não configurado na empresa</td><td class="tc-exp">Botão de emissão desabilitado; mensagem informativa clara exibida; nenhuma requisição enviada ao Spedy</td><td><span class="api-tag">UI — cert check</span><span class="ev-ui">● UI</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-74</td><td class="tc-desc">Webhook Spedy — atualização assíncrona de status</td><td class="tc-pre">Nota em processamento assíncrono no Spedy</td><td class="tc-exp">Webhook recebido em /api/webhooks/spedy; status da nota atualizado no banco; sem necessidade de polling manual</td><td><span class="api-tag">POST /api/webhooks/spedy</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-159</td><td class="tc-desc">Campos LC 116 — código federal e municipal de serviço</td><td class="tc-pre">Formulário NFS-e aberto; tipo NFS-e selecionado</td><td class="tc-exp">Campos específicos exibidos: Código Federal de Serviço (ex: 1.07) e Código Municipal de Serviço (ex: 107); ambos obrigatórios para transmissão; NFS-e rejeitada pelo Spedy se ausentes</td><td><span class="api-tag">NFS-e — codigoServicoCNAE / codigoServicoMunicipio</span><span class="ev-code">● Código</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
+            <tr><td class="tc-code">TC-160</td><td class="tc-desc">Download do XML da NFS-e autorizada</td><td class="tc-pre">NFS-e AUTORIZADA</td><td class="tc-exp">XML válido baixado; estrutura padrão NFS-e com dados do prestador, tomador e serviço</td><td><span class="api-tag">GET Spedy /v1/nfse/{id}/xml</span><span class="ev-real">● API Real</span></td><td><span class="status-badge s-pass">✓ Aprovado</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -89,8 +89,8 @@
   </div>
 
   <div class="footer">
-    <div>Módulo: Notas Fiscais — FL-13, FL-14, FL-15 (Spedy API)</div>
-    <div>POP-QA-001 · ERP Mirante · 23/06/2026</div>
+    <div>Modulo: Notas Fiscais — FL-13, FL-14, FL-15 (Spedy API)</div>
+    <div>POP-QA-001 · ERP Mirante · 20/06/2026</div>
   </div>
 </main>
 <script>function toggleFlow(id){ document.getElementById(id).classList.toggle('open') }</script>
